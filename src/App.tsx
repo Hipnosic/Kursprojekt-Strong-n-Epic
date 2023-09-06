@@ -1,10 +1,22 @@
 import React from 'react';
-import logo from './assets/gymSession.jpg'
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import LandingPage from './pages/landing/LandingPage';
+
+
+
 
 function App() {
   return (
-    <></>
+    <>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<LandingPage/>}></Route>
+        </Routes>
+      </div>
+    </Router>
+    </>
   );
 }
 
