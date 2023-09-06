@@ -2,10 +2,12 @@ import React from "react";
 
 export default function LandingPage () {
     return (
-    <div>
-        <h1>Strong n' Epic</h1>
-        <button>Log In</button>
-        <button>Sign Up</button>
+    <div className="landing-page">
+        <h1 className="landing-title">Strong n' Epic</h1>
+        <div className="landing-btns">
+        <button className="login-btn">Log In</button>
+        <button className="signup-btn">Sign Up</button>
+        </div>
 
     </div>
     )

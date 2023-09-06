@@ -19,7 +19,7 @@ function App() {
   return (
     <>
     <Router>
-      <div>
+      <div className='App'>
         <Routes>
           <Route path="/" element={<LandingPage setCurrentUser={setCurrentUser}/>} />
         </Routes>
