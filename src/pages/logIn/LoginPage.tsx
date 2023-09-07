@@ -1,19 +1,14 @@
 import { useState } from "react";
-import { UserInfo } from "../../types/UserTypes";
+import { LoginInterface, UserInfo } from "../../types/UserTypes";
 import { Link } from "react-router-dom";
 import authService from "../../service/authService";
-
-interface userDetails {
-  username: string;
-  password: string;
-}
 
 type LoginPageProps = {
   setCurrentUser: React.Dispatch<React.SetStateAction<UserInfo>>;
 };
 
 const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
-  const [credential, setCredential] = useState<userDetails>({ username: "", password: "" });
+  const [credential, setCredential] = useState<LoginInterface>({ username: "", password: "" });
   const [msg, setMsg] = useState<string>("");
 
   const handleCredential = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +63,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
         Cancel
       </button>
       <p>
-        No account? <Link to="signup">Click here</Link>
+        No account? <Link to="/signup">Click here</Link>
       </p>
     </form>
   );

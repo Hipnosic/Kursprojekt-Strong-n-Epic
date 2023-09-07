@@ -3,7 +3,13 @@ interface loginProps {
   password: string;
 }
 
-const fetchOptions = async (url: string, method: string, data: loginProps): Promise<Response> => {
+interface signupProps {
+  username: string;
+  password: string;
+  email: string;
+}
+
+const fetchOptions = async <T>(url: string, method: string, data: T): Promise<Response> => {
   const options = {
     method: method,
     body: JSON.stringify(data),
@@ -19,5 +25,9 @@ async function login(userDetails: loginProps): Promise<Response> {
   return await fetchOptions(`api/login`, "POST", userDetails);
 }
 
-const authService = { login };
+async function signup(userDetails: signupProps): Promise<Response> {
+  return await fetchOptions(`api/signup`, "POST", userDetails);
+}
+
+const authService = { login, signup };
 export default authService;
