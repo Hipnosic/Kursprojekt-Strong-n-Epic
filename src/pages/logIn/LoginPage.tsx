@@ -14,6 +14,7 @@ type LoginPageProps = {
 
 const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
   const [credential, setCredential] = useState<userDetails>({ username: "", password: "" });
+  const [msg, setMsg] = useState<string>("");
 
   const handleCredential = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredential({ ...credential, [e.target.name]: e.target.value });
@@ -21,15 +22,18 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
 
   const handleCancelBtn = () => {
     setCredential({ username: "", password: "" });
+    setMsg("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await authService.login(credential);
     if (res.status >= 400) {
+      setMsg("wrong credentials");
       return false;
     } else {
       const data = await res.json();
+      setMsg("logged in successfully");
       setCurrentUser(data);
     }
   };
@@ -56,6 +60,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
           }}
         />
       </div>
+
+      {msg !== "" && <p>{msg}</p>}
 
       <button type="submit">Login</button>
       <button type="reset" onClick={handleCancelBtn}>
