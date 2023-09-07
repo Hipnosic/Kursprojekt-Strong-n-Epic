@@ -5,6 +5,8 @@ import LandingPage from './pages/landing/LandingPage';
 import LoginPage from './pages/logIn/LoginPage';
 import SignupPage from './pages/signUp/SignupPage';
 import { UserInfo } from './types/UserTypes';
+import { Session } from './types/Session'
+import HomePage from './pages/home/HomePage';
 
 const defaultUser: UserInfo = {
   id: 0,
@@ -15,8 +17,19 @@ const defaultUser: UserInfo = {
   sessions: [],
 }
 
+const defaultSession: Session = {
+  title: "",
+  trainer: "",
+  start: "",
+  end: "",
+  date: "",
+  spots: 0,
+  registered: [],
+}
+
 function App() {
   const [currentUser, setCurrentUser] = useState(defaultUser);
+  const [currentSession, setCurrentSession] = useState(defaultSession)
 
   return (
     <>
@@ -25,6 +38,7 @@ function App() {
           <Route path="/" element={<LandingPage/>} />
           <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser}/>} />
           <Route path="/signup" element={<SignupPage/>} />
+          <Route path="/homePage" element={<HomePage setCurrentSession={setCurrentSession}/>} /> 
         </Routes>
       </Router>
     </>
