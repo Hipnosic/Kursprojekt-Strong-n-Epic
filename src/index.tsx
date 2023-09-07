@@ -11,6 +11,7 @@ let userArray: UserInfo[] = [
 
     username: "Hotdog56",
     password: "123",
+    email: "hotdoglover@gmail.com",
     role: "ADMIN",
     sessions: [],
   },
@@ -20,6 +21,7 @@ let userArray: UserInfo[] = [
 
     username: "Arnoldfan123",
     password: "123",
+    email: "arnoldisthebest@hotmail.com",
     role: "USER",
     sessions: [],
   },
@@ -29,6 +31,7 @@ let userArray: UserInfo[] = [
 
     username: "lol123",
     password: "123",
+    email: "redditmoderator@gmail.com",
     role: "USER",
     sessions: [],
   },
