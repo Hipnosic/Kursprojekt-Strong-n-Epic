@@ -7,7 +7,7 @@ interface SessionItemProps {
 
 const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   const [spot] = useState<number>(session.spots);
-  const [registerds, setRegisterds] = useState<number>(session.registerd.length);
+  const [registerds, setRegistereds] = useState<number>(session.registered.length);
 
   const handleBooking = async () => {};
 

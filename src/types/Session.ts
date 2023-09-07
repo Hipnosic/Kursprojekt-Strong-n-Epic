@@ -3,9 +3,9 @@ import { UserInfo } from "./UserTypes";
 export interface Session {
   title: string;
   trainer: string;
-  start: number;
-  end: number;
+  start: string;
+  end: string;
   date: string;
   spots: number;
-  registerd: UserInfo[];
+  registered: UserInfo[];
 }
