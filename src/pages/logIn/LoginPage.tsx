@@ -68,7 +68,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
         Cancel
       </button>
       <p>
-        No account? <Link to="signup">Click here</Link>
+        No account? <Link to="/signup">Click here</Link>
       </p>
     </form>
   );

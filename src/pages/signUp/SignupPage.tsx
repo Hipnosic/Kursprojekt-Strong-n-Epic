@@ -1,57 +1,62 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom"
-import { signupInterface } from '../../types/UserTypes';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import authService from "../../service/authService";
 
-const defaultSignupValues: signupInterface = {
-    username: "",
-    password: "",
-}
-
-export default function SignupPage () {
-    const [signupValues, setSignupValues] = useState(defaultSignupValues)
-    const navigate = useNavigate()
-
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-        const { name, value } = event.target;
-        setSignupValues({
-          ...signupValues,
-          [name]: value,
-        });
-    }
-
-    function navigateToLogin () {
-        navigate("/login")
-    }
-    
-
-    async function handleSignup() {
-        try {
-            const res = await fetch("/api/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(signupValues)
-            })
-            if (res.ok) {
-                const newUser = await res.json();
-                console.log("New User:", newUser)
-                setSignupValues(defaultSignupValues)
-            } else {
-                console.error("Signup failed")
-            }
-        } catch (error) {
-            console.error("Error:", error)
-        }
-    }
-    return (
-        <>
-            <div className="signup-container">
-                <input name="username" type="text" className="username-field" value={signupValues.username} onChange={handleChange}/>
-                <input name="password" type="text" className="passsword-field" value={signupValues.password} onChange={handleChange}/>
-                <button className="signup-btn" onClick={handleSignup} type="submit">Sign up</button>
-                <button className="create-account" onClick={navigateToLogin}></button>
-            </div>
-        </>
-    )
+type signUpValues = {
+  username: string;
+  password: string;
+  email: string;
 };
+
+export default function SignupPage(): JSX.Element {
+  const [signupValues, setSignupValues] = useState<signUpValues>({ username: "", password: "", email: "" });
+  const [msg, setMsg] = useState<string>("");
+
+  const handleSignupValues = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSignupValues({ ...signupValues, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (signupValues.email === undefined || signupValues.username === undefined || signupValues.password === undefined) {
+      setMsg("one field is empty");
+      return false;
+    }
+    const res = await authService.signup(signupValues);
+
+    if (res.status >= 400) {
+      setMsg("something went wrong");
+      return false;
+    } else {
+      const data = await res.json();
+      console.log(data);
+
+      setMsg("successfully created an account");
+    }
+  };
+
+  return (
+    <form className="signup-container" onSubmit={handleSubmit}>
+      <div>
+        <label>Username</label>
+        <input name="username" type="text" className="username-field" onChange={handleSignupValues} />
+      </div>
+      <div>
+        <label>Email</label>
+        <input name="email" type="text" className="email-field" onChange={handleSignupValues} />
+      </div>
+      <div>
+        <label>Password</label>
+        <input name="password" type="password" className="passsword-field" onChange={handleSignupValues} />
+      </div>
+      {msg !== "" && <p>{msg}</p>}
+
+      <button className="signup-btn" type="submit">
+        Sign up
+      </button>
+      <p>
+        Already has an account? <Link to="/signup">Click here</Link>
+      </p>
+    </form>
+  );
+}
