@@ -10,6 +10,7 @@ const defaultUser: UserInfo = {
   id: 0,
   username: "",
   password: "",
+  email: "",
   role: "USER",
   sessions: [],
 }
