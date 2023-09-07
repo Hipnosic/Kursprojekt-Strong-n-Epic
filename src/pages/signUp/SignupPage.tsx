@@ -5,6 +5,7 @@ import { signupInterface } from '../../types/UserTypes';
 const defaultSignupValues: signupInterface = {
     username: "",
     password: "",
+    email: "",
 }
 
 export default function SignupPage () {

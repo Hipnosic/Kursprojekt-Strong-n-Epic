@@ -4,6 +4,7 @@ export interface UserInfo {
     id: number;
     username: string;
     password: string;
+    email: string;
     role: "ADMIN" | "USER";
     sessions: Session[];
 }
@@ -16,4 +17,5 @@ export interface LoginInterface {
 export interface signupInterface {
     username: string;
     password: string;
+    email: string;
 }
