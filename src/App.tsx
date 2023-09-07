@@ -14,13 +14,6 @@ const defaultUser: UserInfo = {
 function App() {
   const [currentUser, setCurrentUser] = useState(defaultUser);
 
-  useEffect(() => {
-    fetch('/users')
-      .then((response) => {
-        return response.json
-      })
-  })
-
   return (
     <>
       <Router>

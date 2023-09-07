@@ -17,7 +17,7 @@ let userArray: UserInfo[] = [
     role: "USER",
   },
   { 
-    username: "Jacke",
+    username: "lol123",
     password: "123",
     role: "USER",
   },
@@ -27,11 +27,11 @@ new Server({
   routes() {
     this.namespace = "api"
 
-    this.get("/users", () => {
+    this.get("/login", () => {
       return { users: userArray }
     })
 
-    this.post("/users", (schema, request) => {
+    this.post("/login", (schema, request) => {
       let body = JSON.parse(request.requestBody)
       userArray.push(body)
 
