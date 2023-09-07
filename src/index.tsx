@@ -57,8 +57,8 @@ new Server({
 
     this.post("/signup", (schema, request) => {
       let body = JSON.parse(request.requestBody);
-      const isregisterd = userArray.find((user) => user.username.toLowerCase().includes(body.username.toLowerCase()));
-      if (isregisterd !== undefined) throw new Error("user already exist");
+      const isRegisterd = userArray.find((user) => user.username.toLowerCase().includes(body.username.toLowerCase()));
+      if (isRegisterd !== undefined) throw new Error("user already exist");
       body.id = userArray.length + 1;
       body.session = [];
       userArray.push(body);
