@@ -3,12 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { UserInfo } from "./types/UserTypes";
-import { Response, Server } from "miragejs";
+import { Server } from "miragejs";
 
 let userArray: UserInfo[] = [
   {
-
-
     id: 1,
 
     username: "Hotdog56",
@@ -18,8 +16,6 @@ let userArray: UserInfo[] = [
   },
 
   {
-
-  { 
     id: 2,
 
     username: "Arnoldfan123",
@@ -29,8 +25,6 @@ let userArray: UserInfo[] = [
   },
 
   {
-
-  { 
     id: 3,
 
     username: "lol123",
