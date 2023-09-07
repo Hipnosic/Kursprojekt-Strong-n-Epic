@@ -6,9 +6,11 @@ import LoginPage from './pages/logIn/LoginPage';
 import { UserInfo } from './types/UserTypes';
 
 const defaultUser: UserInfo = {
+  id: 0,
   username: "",
   password: "",
   role: "USER",
+  sessions: [],
 }
 
 function App() {

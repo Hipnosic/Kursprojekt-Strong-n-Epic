@@ -7,19 +7,36 @@ import { Response, Server } from "miragejs";
 
 let userArray: UserInfo[] = [
   {
+
+
+    id: 1,
+
     username: "Hotdog56",
     password: "123",
     role: "ADMIN",
+    sessions: [],
   },
+
   {
+
+  { 
+    id: 2,
+
     username: "Arnoldfan123",
     password: "123",
     role: "USER",
+    sessions: [],
   },
+
   {
+
+  { 
+    id: 3,
+
     username: "lol123",
     password: "123",
     role: "USER",
+    sessions: [],
   },
 ];
 
