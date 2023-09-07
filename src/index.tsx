@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { UserInfo } from "./types/UserTypes";
-import { Server } from "miragejs";
+import { Response, Server } from "miragejs";
 
 let userArray: UserInfo[] = [
   {
@@ -32,11 +32,16 @@ new Server({
     });
 
     this.post("/login", (schema, request) => {
-      let body = JSON.parse(request.requestBody);
-      console.log(body);
-      // const user = userArray.find((user) => user.username.toLowerCase().includes(body.username.toLowerCase()));
+      const body = JSON.parse(request.requestBody);
+      const user = userArray.find((user) => user.username.toLowerCase().includes(body.username.toLowerCase()));
+      if (user === undefined) throw new Error("user could not be found in the db");
+      if (body === undefined || body.password !== user.password) {
+        let error = new Error("Failed to identify user with given credentials");
+        error.name = "InvalidAuthenticationException";
+        throw error;
+      }
 
-      return { users: body };
+      return user;
     });
   },
 });

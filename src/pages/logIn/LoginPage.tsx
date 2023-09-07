@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UserInfo } from "../../types/UserTypes";
 import { Link } from "react-router-dom";
 import authService from "../../service/authService";
@@ -26,6 +26,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await authService.login(credential);
+    if (res.status >= 400) {
+      return false;
+    } else {
+      const data = await res.json();
+      setCurrentUser(data);
+    }
   };
 
   return (
