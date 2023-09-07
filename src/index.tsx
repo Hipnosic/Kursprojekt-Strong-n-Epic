@@ -53,16 +53,20 @@ new Server({
       }
 
       return { users: body };
-    })
+    });
 
     this.post("/signup", (schema, request) => {
-      let body = JSON.parse(request.requestBody)
-      userArray.push(body)
+      let body = JSON.parse(request.requestBody);
+      const isregisterd = userArray.find((user) => user.username.toLowerCase().includes(body.username.toLowerCase()));
+      if (isregisterd !== undefined) throw new Error("user already exist");
+      body.id = userArray.length + 1;
+      body.session = [];
+      userArray.push(body);
 
       return { users: body };
-    })
-  }
-})
+    });
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(

@@ -25,7 +25,7 @@ export default function SignupPage(): JSX.Element {
     const res = await authService.signup(signupValues);
 
     if (res.status >= 400) {
-      setMsg("something went wrong");
+      setMsg("username already exist");
       return false;
     } else {
       const data = await res.json();
@@ -55,7 +55,7 @@ export default function SignupPage(): JSX.Element {
         Sign up
       </button>
       <p>
-        Already has an account? <Link to="/signup">Click here</Link>
+        Already has an account? <Link to="/login">Click here</Link>
       </p>
     </form>
   );
