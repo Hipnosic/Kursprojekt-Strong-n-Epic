@@ -52,10 +52,17 @@ new Server({
         throw error;
       }
 
-      return user;
-    });
-  },
-});
+      return { users: body };
+    })
+
+    this.post("/signup", (schema, request) => {
+      let body = JSON.parse(request.requestBody)
+      userArray.push(body)
+
+      return { users: body };
+    })
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
