@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import authService from "../../service/authService";
-
-type signUpValues = {
-  username: string;
-  password: string;
-  email: string;
-};
+import { signupInterface } from "../../types/UserTypes";
 
 export default function SignupPage(): JSX.Element {
-  const [signupValues, setSignupValues] = useState<signUpValues>({ username: "", password: "", email: "" });
+  const [signupValues, setSignupValues] = useState<signupInterface>({ username: "", password: "", email: "" });
   const [msg, setMsg] = useState<string>("");
 
   const handleSignupValues = (e: React.ChangeEvent<HTMLInputElement>) => {
