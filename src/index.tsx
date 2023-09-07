@@ -6,6 +6,7 @@ import { UserInfo } from "./types/UserTypes";
 import { Session } from "./types/Session";
 import { Server } from "miragejs";
 
+
 let userArray: UserInfo[] = [
   {
     id: 1,
@@ -99,6 +100,11 @@ new Server({
 
       return { users: body };
     });
+
+    this.get("/session", () => {
+      return sessionArray;
+    });
+
   },
 });
 
