@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Session } from "../types/Session";
 import cacheService from "../service/CacheService";
+import requestService from "../service/requestService";
 
 interface SessionItemProps {
   session: Session;
@@ -12,41 +13,22 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   const [isBooked, setIsBooked] = useState<boolean>(false);
 
   useEffect(() => {
-    const username = cacheService.getLocalValue("USER");
+    const userData = cacheService.getLocalValue("USER");
 
-    const isRegisterd = session.registered.find((user) => user.username === username.username);
+    const isRegisterd = session.registered.find((user) => user.username === userData.username);
     if (isRegisterd !== undefined) {
       setIsBooked(true);
     }
   }, [session.registered]);
 
   const handleBooking = async () => {
-    const username = cacheService.getLocalValue("USER");
-    if (isBooked) {
-      console.log("Session is already booked by the user.");
-      return;
-    }
-    try {
-      const requestBody = {
-        session,
-        username,
-      };
-      const response = await fetch("/api/bookSession", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      });
-      if (response.ok) {
-        setRegistereds(registerds + 1);
-        setIsBooked(true);
-      } else {
-        console.error("Booking failed");
-      }
-    } catch (error) {
-      console.error("Error booking session:", error);
-    }
+    const quary = {
+      username: cacheService.getLocalValue("USER").username,
+      title: session.title,
+    };
+    const res = await requestService.bookSession(quary);
+
+    console.log(res);
   };
 
   return (
@@ -60,15 +42,11 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
         Antal platser:{registerds}/{session.spots}
       </p>
 
-      {isBooked ? (
-        <button disabled>Already Booked</button>
-      ) : (
-        <>
-          {(isBooked && <button disabled>already booked</button>) || (registerds !== spot && <button onClick={handleBooking}>Book</button>) || (
-            <button disabled>Fully Booked</button>
-          )}
-        </>
-      )}
+      <>
+        {(isBooked && <button disabled>already booked</button>) || (registerds !== spot && <button onClick={handleBooking}>Book</button>) || (
+          <button disabled>Fully Booked</button>
+        )}
+      </>
     </div>
   );
 };

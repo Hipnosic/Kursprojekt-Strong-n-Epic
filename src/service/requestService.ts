@@ -11,6 +11,11 @@ interface signupProps {
   email: string;
 }
 
+interface bookSessionProps {
+  title:string
+  username:string
+}
+
 /**
  * fetchOptions is a fetch builder that takes in diffrent url and can send diffrent request and send with data if needed
  * @param url is a string type http url to the server
@@ -59,11 +64,16 @@ async function signup(userDetails: signupProps): Promise<Response> {
 const fetchSession = async (): Promise<Session[]> => {
   const response = await fetchOptions("api/session", "GET");
   if (response === null) throw new Error("could not find session list");
-  const data = await response.json();
+  const data = await response.json() as Session[];
 
   return data;
 };
 
-const requestService = { fetchSession, login, signup };
+const bookSession = async (quary:bookSessionProps):Promise<Response> => {
+  return await fetchOptions("api/bookSession", "POST",quary);
+  
+}
+
+const requestService = { fetchSession, login, signup,bookSession };
 
 export default requestService;
