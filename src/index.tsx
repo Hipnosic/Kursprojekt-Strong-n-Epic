@@ -6,7 +6,6 @@ import { UserInfo } from "./types/UserTypes";
 import { Session } from "./types/Session";
 import { Server } from "miragejs";
 
-
 let userArray: UserInfo[] = [
   {
     id: 1,
@@ -66,8 +65,8 @@ let sessionArray: Session[] = [
     date: new Date("2023-10-08T16:40").toLocaleDateString(),
     spots: 15,
     registered: [],
-  }
-]
+  },
+];
 
 new Server({
   routes() {
@@ -87,7 +86,7 @@ new Server({
         throw error;
       }
 
-      return { users: body };
+      return user;
     });
 
     this.post("/signup", (schema, request) => {
@@ -106,19 +105,18 @@ new Server({
     });
 
     this.post("/bookSession", (schema, request) => {
-      const sessionData = JSON.parse(request.requestBody)
-      const sessionToBook = sessionArray.find(session => session.title === sessionData.title);
+      const sessionData = JSON.parse(request.requestBody);
+      const sessionToBook = sessionArray.find((session) => session.title === sessionData.title);
       if (!sessionToBook) {
-        throw new Error ("session not found");
+        throw new Error("session not found");
       }
 
       if (sessionToBook.registered.length >= sessionToBook.spots) {
-        throw new Error ("Session is fully booked");
+        throw new Error("Session is fully booked");
       }
-      sessionToBook.registered.push(sessionData)
-      return sessionToBook
-    })
-
+      sessionToBook.registered.push(sessionData);
+      return sessionToBook;
+    });
   },
 });
 

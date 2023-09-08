@@ -3,6 +3,7 @@ import { LoginInterface, UserInfo } from "../../types/UserTypes";
 import { Link } from "react-router-dom";
 import requestService from "../../service/requestService";
 import CredentialInputFields from "../../components/CredentialInputFields";
+import cacheService from "../../service/CacheService";
 
 type LoginPageProps = {
   setCurrentUser: React.Dispatch<React.SetStateAction<UserInfo>>;
@@ -24,7 +25,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
       setMsg("wrong credentials");
       return false;
     } else {
-      const data = await res.json();
+      const data = (await res.json()) as UserInfo;
+      cacheService.saveLocalValue("USER", { username: data.username, role: data.role });
       setMsg("logged in successfully");
       setCurrentUser(data);
     }
