@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
-
 import { Session } from "../types/Session";
 import requestService from "../service/requestService";
+
+/**
+ * useFetchSession is a custom hook to fetch all the sessions in the server and sends out when its loading or when there is an error and if everything is fine sends the data out
+ * @returns isLoading, error, data
+ */
 
 const useFetchSession = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -12,10 +16,9 @@ const useFetchSession = () => {
       try {
         setIsLoading(true);
         const response = await requestService.fetchSession();
-        console.log(response)
+        console.log(response);
         setData(response);
       } catch (err) {
-        console.log(err)
         setError(true);
       } finally {
         setIsLoading(false);
