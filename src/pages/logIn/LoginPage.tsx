@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LoginInterface, UserInfo } from "../../types/UserTypes";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import requestService from "../../service/requestService";
 import CredentialInputFields from "../../components/CredentialInputFields";
 import cacheService from "../../service/CacheService";
@@ -12,6 +12,7 @@ type LoginPageProps = {
 const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
   const [userCredential, setUserCredential] = useState<LoginInterface>({ username: "", password: "" });
   const [msg, setMsg] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleCancelBtn = () => {
     setUserCredential({ username: "", password: "" });
@@ -29,6 +30,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
       cacheService.saveLocalValue("USER", { username: data.username, role: data.role });
       setMsg("logged in successfully");
       setCurrentUser(data);
+      navigate("/homePage")
     }
   };
 

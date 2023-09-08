@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Session } from "../types/Session";
 import useFetchSession from "../hooks/useFetchSessions";
 
@@ -10,6 +10,16 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   const [spot] = useState<number>(session.spots);
   const [registerds, setRegistereds] = useState<number>(session.registered.length);
   const [isBooked, setIsBooked] = useState<boolean>(false);
+  const [username, setUsername] = useState<string | null>(null)
+
+    useEffect(() => {
+    const savedUser = localStorage.getItem("USER");
+    if (savedUser) {
+      const userData = JSON.parse(savedUser);
+      setUsername(userData.username);
+    }
+  }, []);
+
 
   const handleBooking = async () => {
     if (isBooked) {
@@ -17,12 +27,16 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
       return;
     }
     try {
+      const requestBody = {
+        session,
+        username,
+      }
       const response = await fetch("/api/bookSession", {
         method: "POST", 
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(session)
+        body: JSON.stringify(requestBody)
       });
       if (response.ok) {
         setRegistereds(registerds + 1);
