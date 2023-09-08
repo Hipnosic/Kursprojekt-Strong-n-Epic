@@ -9,9 +9,15 @@ type HomePageProps = {
 };
 
 const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
-  const { isLoading, error, data } = useFetchSession();
+  const [dateSearch, setDateSearch] = useState<string>("");
+  const { isLoading, error, data } = useFetchSession(dateSearch);
 
-  return <>{(error && <p>404 could not found</p>) || (isLoading && <p>loading...</p>) || <SessionList sessions={data} />}</>;
+  return (
+    <>
+      <input type="date" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDateSearch(e.target.value)} />
+      {(error && <p>404 could not found</p>) || (isLoading && <p>loading...</p>) || <SessionList sessions={data} />}
+    </>
+  );
 };
 
 export default HomePage;

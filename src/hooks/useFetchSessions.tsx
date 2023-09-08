@@ -3,11 +3,12 @@ import { Session } from "../types/Session";
 import requestService from "../service/requestService";
 
 /**
- * useFetchSession is a custom hook to fetch all the sessions in the server and sends out when its loading or when there is an error and if everything is fine sends the data out
+ * useFetchSession is a custom hook to fetch all the sessions in the server if quary is an empty string, if quary isnt empty it search for the objects in the arry
+ *  and sends out when its loading or when there is an error and if everything is fine sends the data out
+ * @param quary is date in string format exempel '2023-03-08'
  * @returns isLoading, error, data
  */
-
-const useFetchSession = () => {
+const useFetchSession = (quary: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [data, setData] = useState<Session[]>();
@@ -16,14 +17,19 @@ const useFetchSession = () => {
       try {
         setIsLoading(true);
         const response = await requestService.fetchSession();
-        setData(response);
+        if (quary !== "") {
+          const matchedData = response.filter((session) => session.date.includes(quary));
+          setData(matchedData);
+        } else {
+          setData(response);
+        }
       } catch (err) {
         setError(true);
       } finally {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [quary]);
   return { isLoading, error, data };
 };
 
