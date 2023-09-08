@@ -11,12 +11,14 @@ function saveLocalValue<T>(ref: string, value: T) {
 /**
  * getLocalValue gets data from local with ref and change the data to a string
  * @param ref is a ref to where the data is saves in local storage
- * @returns a string formated data
+ * @returns a format json string into an object
  */
 
 function getLocalValue(ref: string) {
   const value = localStorage.getItem(ref);
   if (value == null) throw new Error(`${ref} not found in local storage`);
+
+  
 
   return JSON.parse(value);
 }
