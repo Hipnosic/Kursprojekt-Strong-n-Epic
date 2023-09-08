@@ -9,13 +9,9 @@ type HomePageProps = {
 };
 
 const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
-    const { isLoading, error, data } = useFetchSession();
-    
-    return (
-        <>
-        {(error && <p>404 could not found</p>)||(isLoading && <p>loading...</p>)||<SessionList sessions={data}  />}
-        </>
-    );
+  const { isLoading, error, data } = useFetchSession();
+
+  return <>{(error && <p>404 could not found</p>) || (isLoading && <p>loading...</p>) || <SessionList sessions={data} />}</>;
 };
 
 export default HomePage;

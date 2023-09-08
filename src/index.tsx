@@ -105,6 +105,20 @@ new Server({
       return sessionArray;
     });
 
+    this.post("/bookSession", (schema, request) => {
+      const sessionData = JSON.parse(request.requestBody)
+      const sessionToBook = sessionArray.find(session => session.title === sessionData.title);
+      if (!sessionToBook) {
+        throw new Error ("session not found");
+      }
+
+      if (sessionToBook.registered.length >= sessionToBook.spots) {
+        throw new Error ("Session is fully booked");
+      }
+      sessionToBook.registered.push(sessionData)
+      return sessionToBook
+    })
+
   },
 });
 
