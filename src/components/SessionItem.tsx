@@ -11,24 +11,28 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   const [spot] = useState<number>(session.spots);
   const [registerds, setRegistereds] = useState<number>(session.registered.length);
   const [isBooked, setIsBooked] = useState<boolean>(false);
+  const [username] = useState<string>(cacheService.getLocalValue("USER").username);
 
   useEffect(() => {
-    const userData = cacheService.getLocalValue("USER");
-
-    const isRegisterd = session.registered.find((user) => user.username === userData.username);
+    const isRegisterd = session.registered.find((user) => user.username === username);
     if (isRegisterd !== undefined) {
       setIsBooked(true);
     }
-  }, [session.registered]);
+  }, [session.registered, username]);
 
   const handleBooking = async () => {
     const quary = {
-      username: cacheService.getLocalValue("USER").username,
+      username: username,
       title: session.title,
     };
     const res = await requestService.bookSession(quary);
-
-    console.log(res);
+    if (res.status >= 400) {
+      return false;
+    } else {
+      const data = (await res.json()) as Session;
+      setIsBooked(true);
+      setRegistereds(data.registered.length);
+    }
   };
 
   return (
@@ -43,7 +47,11 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
       </p>
 
       <>
-        {(isBooked && <button disabled>already booked</button>) || (registerds !== spot && <button onClick={handleBooking}>Book</button>) || (
+        {isBooked ? (
+          <button disabled>already booked</button>
+        ) : registerds !== spot ? (
+          <button onClick={handleBooking}>Book</button>
+        ) : (
           <button disabled>Fully Booked</button>
         )}
       </>

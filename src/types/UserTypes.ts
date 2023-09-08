@@ -1,4 +1,4 @@
-import { Session } from './Session'
+import { SessionList } from './Session'
 
 export interface UserInfo {
     id: number;
@@ -6,7 +6,7 @@ export interface UserInfo {
     password: string;
     email: string;
     role: "ADMIN" | "USER";
-    sessions: Session[];
+    sessions: SessionList[];
 }
 
 export interface LoginInterface {

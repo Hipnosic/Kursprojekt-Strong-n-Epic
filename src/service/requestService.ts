@@ -70,9 +70,10 @@ const fetchSession = async (): Promise<Session[]> => {
 };
 
 const bookSession = async (quary:bookSessionProps):Promise<Response> => {
-  return await fetchOptions("api/bookSession", "POST",quary);
+  return await fetchOptions("api/bookSession", "PUT", quary);
   
 }
+
 
 const requestService = { fetchSession, login, signup,bookSession };
 

@@ -104,25 +104,28 @@ new Server({
       return sessionArray;
     });
 
-    this.post("/bookSession", (schema, request) => {
-      const sessionData = JSON.parse(request.requestBody);
+    this.put("/bookSession", (schema, request) => {
+      const quary = JSON.parse(request.requestBody);
 
-      const sessionToBook = sessionArray.find((session) => session.title === sessionData.session.title);
-      if (!sessionToBook) {
-        throw new Error("session not found");
-      }
-      const userToBook = userArray.find((user) => user.username === sessionData.username.username);
-      if (!userToBook) {
-        throw new Error("User not found");
-      }
+      const session = sessionArray.find((session) => session.title === quary.title);
+      if (session === undefined) throw new Error("Session cant be found in the server");
+      const user = userArray.find((user) => user.username.toLowerCase().includes(quary.username.toLowerCase()));
+      if (user === undefined) throw new Error("user could not be found in the server");
+      const isBooked = user.sessions.find((session) => session.title === quary.title);
+      if (isBooked !== undefined) throw new Error("its already added");
 
-      if (sessionToBook.registered.length >= sessionToBook.spots) {
-        throw new Error("Session is fully booked");
-      }
+      const obj = {
+        title: session.title,
+        trainer: session.trainer,
+        start: session.start,
+        end: session.end,
+        date: session.date,
+      };
 
-      sessionToBook.registered.push(userToBook);
+      session.registered.push(user);
+      user.sessions.push(obj);
 
-      return sessionToBook;
+      return session;
     });
   },
 });
