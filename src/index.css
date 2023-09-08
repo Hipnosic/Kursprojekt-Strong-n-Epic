@@ -47,3 +47,8 @@ code {
   padding: 1em;
   margin-top: 1em;
 }
+
+.nav-schedule-btn.active {
+  background-color: #007bff;
+  color: #fff; 
+}
