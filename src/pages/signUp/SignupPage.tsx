@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { signupInterface } from "../../types/UserTypes";
+import { UserInfo, signupInterface } from "../../types/UserTypes";
 import requestService from "../../service/requestService";
 import CredentialInputFields from "../../components/CredentialInputFields";
+import cacheService from "../../service/CacheService";
 
 export default function SignupPage(): JSX.Element {
   const [singupValues, setSingupValues] = useState<signupInterface>({ username: "", password: "", email: "" });
@@ -20,9 +21,8 @@ export default function SignupPage(): JSX.Element {
       setMsg("username already exist");
       return false;
     } else {
-      const data = await res.json();
-      console.log(data);
-
+      const data = (await res.json()) as UserInfo;
+      cacheService.saveLocalValue("USER", { username: data.username, role: data.role });
       setMsg("successfully created an account");
     }
   };
