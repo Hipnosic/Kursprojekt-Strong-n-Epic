@@ -15,7 +15,9 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
     <>
       <input type="date" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDateSearch(e.target.value)} />
       <button onClick={() => setDateSearch("")}>Clear Filter</button>
-      {(error && <p>404 could not found</p>) || (isLoading && <p>loading...</p>) || <SessionList sessions={data} />}
+      {(error && <p>404 could not found</p>) ||
+        (isLoading && <p>loading...</p>) ||
+        (data?.length === 0 && <p>There is no session on {dateSearch}</p>) || <SessionList sessions={data} />}
     </>
   );
 };
