@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Session } from "../../types/Session";
-import { Link } from "react-router-dom";
 import useFetchSession from "../../hooks/useFetchSessions";
 import SessionList from "../../components/SessionList";
 
@@ -15,6 +14,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   return (
     <>
       <input type="date" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDateSearch(e.target.value)} />
+      <button onClick={() => setDateSearch("")}>Clear Filter</button>
       {(error && <p>404 could not found</p>) || (isLoading && <p>loading...</p>) || <SessionList sessions={data} />}
     </>
   );
