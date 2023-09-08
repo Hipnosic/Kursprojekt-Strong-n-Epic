@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import authService from "../../service/authService";
 import { signupInterface } from "../../types/UserTypes";
+import requestService from "../../service/requestService";
 
 export default function SignupPage(): JSX.Element {
   const [signupValues, setSignupValues] = useState<signupInterface>({ username: "", password: "", email: "" });
@@ -17,7 +17,7 @@ export default function SignupPage(): JSX.Element {
       setMsg("one field is empty");
       return false;
     }
-    const res = await authService.signup(signupValues);
+    const res = await requestService.signup(signupValues);
 
     if (res.status >= 400) {
       setMsg("username already exist");

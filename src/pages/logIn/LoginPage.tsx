@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LoginInterface, UserInfo } from "../../types/UserTypes";
 import { Link } from "react-router-dom";
-import authService from "../../service/authService";
+import requestService from "../../service/requestService";
 
 type LoginPageProps = {
   setCurrentUser: React.Dispatch<React.SetStateAction<UserInfo>>;
@@ -22,7 +22,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await authService.login(credential);
+    const res = await requestService.login(credential);
     if (res.status >= 400) {
       setMsg("wrong credentials");
       return false;

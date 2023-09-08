@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import { Session } from "../types/Session";
 import requestService from "../service/requestService";
 
@@ -12,10 +11,9 @@ const useFetchSession = () => {
       try {
         setIsLoading(true);
         const response = await requestService.fetchSession();
-        console.log(response)
+        console.log(response);
         setData(response);
       } catch (err) {
-        console.log(err)
         setError(true);
       } finally {
         setIsLoading(false);
