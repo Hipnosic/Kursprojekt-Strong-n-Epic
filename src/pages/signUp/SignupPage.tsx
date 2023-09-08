@@ -8,8 +8,6 @@ export default function SignupPage(): JSX.Element {
   const [singupValues, setSingupValues] = useState<signupInterface>({ username: "", password: "", email: "" });
   const [msg, setMsg] = useState<string>("");
 
-
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (singupValues.email === undefined || singupValues.username === undefined || singupValues.password === undefined) {
@@ -31,7 +29,7 @@ export default function SignupPage(): JSX.Element {
 
   return (
     <form className="signup-container" onSubmit={handleSubmit}>
-      <CredentialInputFields setSingupValues={setSingupValues}/>
+      <CredentialInputFields setSingupValues={setSingupValues} />
       {msg !== "" && <p>{msg}</p>}
 
       <button className="signup-btn" type="submit">

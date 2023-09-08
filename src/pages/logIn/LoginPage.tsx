@@ -12,7 +12,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
   const [userCredential, setUserCredential] = useState<LoginInterface>({ username: "", password: "" });
   const [msg, setMsg] = useState<string>("");
 
-
   const handleCancelBtn = () => {
     setUserCredential({ username: "", password: "" });
     setMsg("");
@@ -33,7 +32,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CredentialInputFields setUserCredential={setUserCredential}/>
+      <CredentialInputFields setUserCredential={setUserCredential} />
 
       {msg !== "" && <p>{msg}</p>}
 
