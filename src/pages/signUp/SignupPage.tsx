@@ -2,22 +2,19 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signupInterface } from "../../types/UserTypes";
 import requestService from "../../service/requestService";
+import CredentialInputFields from "../../components/CredentialInputFields";
 
 export default function SignupPage(): JSX.Element {
-  const [signupValues, setSignupValues] = useState<signupInterface>({ username: "", password: "", email: "" });
+  const [singupValues, setSingupValues] = useState<signupInterface>({ username: "", password: "", email: "" });
   const [msg, setMsg] = useState<string>("");
-
-  const handleSignupValues = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSignupValues({ ...signupValues, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (signupValues.email === undefined || signupValues.username === undefined || signupValues.password === undefined) {
+    if (singupValues.email === undefined || singupValues.username === undefined || singupValues.password === undefined) {
       setMsg("one field is empty");
       return false;
     }
-    const res = await requestService.signup(signupValues);
+    const res = await requestService.signup(singupValues);
 
     if (res.status >= 400) {
       setMsg("username already exist");
@@ -32,18 +29,7 @@ export default function SignupPage(): JSX.Element {
 
   return (
     <form className="signup-container" onSubmit={handleSubmit}>
-      <div>
-        <label>Username</label>
-        <input name="username" type="text" className="username-field" onChange={handleSignupValues} />
-      </div>
-      <div>
-        <label>Email</label>
-        <input name="email" type="text" className="email-field" onChange={handleSignupValues} />
-      </div>
-      <div>
-        <label>Password</label>
-        <input name="password" type="password" className="passsword-field" onChange={handleSignupValues} />
-      </div>
+      <CredentialInputFields setSingupValues={setSingupValues} />
       {msg !== "" && <p>{msg}</p>}
 
       <button className="signup-btn" type="submit">

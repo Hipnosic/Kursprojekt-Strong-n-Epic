@@ -2,27 +2,24 @@ import { useState } from "react";
 import { LoginInterface, UserInfo } from "../../types/UserTypes";
 import { Link } from "react-router-dom";
 import requestService from "../../service/requestService";
+import CredentialInputFields from "../../components/CredentialInputFields";
 
 type LoginPageProps = {
   setCurrentUser: React.Dispatch<React.SetStateAction<UserInfo>>;
 };
 
 const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
-  const [credential, setCredential] = useState<LoginInterface>({ username: "", password: "" });
+  const [userCredential, setUserCredential] = useState<LoginInterface>({ username: "", password: "" });
   const [msg, setMsg] = useState<string>("");
 
-  const handleCredential = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCredential({ ...credential, [e.target.name]: e.target.value });
-  };
-
   const handleCancelBtn = () => {
-    setCredential({ username: "", password: "" });
+    setUserCredential({ username: "", password: "" });
     setMsg("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await requestService.login(credential);
+    const res = await requestService.login(userCredential);
     if (res.status >= 400) {
       setMsg("wrong credentials");
       return false;
@@ -35,26 +32,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Användarnamn</label>
-        <input
-          name="username"
-          type="text"
-          onChange={(e) => {
-            handleCredential(e);
-          }}
-        />
-      </div>
-      <div>
-        <label>Lössenord</label>
-        <input
-          name="password"
-          type="password"
-          onChange={(e) => {
-            handleCredential(e);
-          }}
-        />
-      </div>
+      <CredentialInputFields setUserCredential={setUserCredential} />
 
       {msg !== "" && <p>{msg}</p>}
 
