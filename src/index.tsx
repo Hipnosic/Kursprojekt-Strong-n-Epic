@@ -97,7 +97,7 @@ new Server({
       body.session = [];
       userArray.push(body);
 
-      return { users: body };
+      return body;
     });
 
     this.get("/session", () => {

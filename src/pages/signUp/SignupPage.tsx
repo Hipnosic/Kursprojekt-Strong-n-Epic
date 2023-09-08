@@ -22,7 +22,7 @@ export default function SignupPage(): JSX.Element {
       return false;
     } else {
       const data = (await res.json()) as UserInfo;
-
+      cacheService.saveLocalValue("USER", { username: data.username, role: data.role });
       setMsg("successfully created an account");
     }
   };
