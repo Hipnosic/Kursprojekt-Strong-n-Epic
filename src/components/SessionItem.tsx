@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Session } from "../types/Session";
+import useFetchSession from "../hooks/useFetchSessions";
 
 interface SessionItemProps {
   session: Session;
@@ -8,8 +9,31 @@ interface SessionItemProps {
 const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   const [spot] = useState<number>(session.spots);
   const [registerds, setRegistereds] = useState<number>(session.registered.length);
+  const [isBooked, setIsBooked] = useState<boolean>(false);
 
-  const handleBooking = async () => {};
+  const handleBooking = async () => {
+    if (isBooked) {
+      console.log("Session is already booked by the user.");
+      return;
+    }
+    try {
+      const response = await fetch("/api/bookSession", {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(session)
+      });
+      if (response.ok) {
+        setRegistereds(registerds + 1);
+        setIsBooked(true);
+      } else {
+        console.error("Booking failed")
+      }
+    } catch (error) {
+      console.error("Error booking session:", error)
+    }
+  };
 
   return (
     <div className="Container">
@@ -22,7 +46,17 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
         Antal platser:{registerds}/{session.spots}
       </p>
 
-      {registerds !== spot ? <button onClick={handleBooking}>Book</button> : <button>Fully Booked</button>}
+      {isBooked ? (
+        <button disabled>Already Booked</button>
+      ) : (
+        <>
+          {registerds !== spot ? (
+            <button onClick={handleBooking}>Book</button>
+          ) : (
+            <button disabled>Fully Booked</button>
+          )}
+        </>
+      )}
     </div>
   );
 };
