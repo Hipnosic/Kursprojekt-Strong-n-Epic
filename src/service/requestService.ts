@@ -123,11 +123,18 @@ const deleteUser = async (id:number):Promise<Response> => {
   
 }
 
+/**
+ * updateUser is a function to update a users role in the server
+ * @param id is a number to help the server find the right user
+ * @param role is a string to change a specific users role
+ * @returns a server response
+ */
+
 const updateUser = async (id:number, role:UserRole):Promise<Response> => {
   return await fetchOptions(`api/user/${id}`,'PUT',role)
 }
 
 
-const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser };
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser,deleteSession };
 
 export default requestService;
