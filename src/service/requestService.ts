@@ -1,4 +1,5 @@
 import { Session } from "../types/Session";
+import { UserInfo } from "../types/UserTypes";
 
 interface loginProps {
   username: string;
@@ -84,7 +85,45 @@ const bookSession = async (quary:bookSessionProps):Promise<Response> => {
   
 }
 
+/**
+ * getUser is a function to get a user by its username with a param
+ * @param username is a string type that comes from local storage
+ * @returns an object which contains the users data
+ */
 
-const requestService = { fetchSession, login, signup,bookSession, deleteSession };
+const getUser = async (username:string):Promise<UserInfo> => {
+  
+  const res = await fetchOptions(`api/user/${username}`, 'GET')
+  if (res === null) throw new Error("could not find user");
+  const data = await res.json() as UserInfo
+  return data
+} 
+
+/**
+ * getUsers is a function that fetched all registerd users in the server 
+ * @returns registerd users data
+ */
+
+const getUsers = async ():Promise<UserInfo[]> => {
+  const res = await fetchOptions('api/users','GET')
+  if (res === null) throw new Error("could not find the array in the server");
+  const data = await res.json() as UserInfo[]
+  return data
+  
+}
+
+/**
+ * deleteUser is a function that takes in a id to delete a user form the server 
+ * @param id is a number to help the server find the right user
+ * @returns a server response
+ */
+
+const deleteUser = async (id:number):Promise<Response> => {
+  return await fetchOptions(`api/user/${id}`,'DELETE')
+  
+}
+
+
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser };
 
 export default requestService;
