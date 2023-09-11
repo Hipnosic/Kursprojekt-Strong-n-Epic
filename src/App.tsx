@@ -7,6 +7,7 @@ import SignupPage from './pages/signUp/SignupPage';
 import { UserInfo } from './types/UserTypes';
 import { Session } from './types/Session'
 import HomePage from './pages/home/HomePage';
+import AdminPage from './pages/admin/AdminPage';
 
 const defaultUser: UserInfo = {
   id: 0,
@@ -18,6 +19,7 @@ const defaultUser: UserInfo = {
 }
 
 const defaultSession: Session = {
+  id: 0,
   title: "",
   trainer: "",
   start: "",
@@ -38,7 +40,8 @@ function App() {
           <Route path="/" element={<LandingPage/>} />
           <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser}/>} />
           <Route path="/signup" element={<SignupPage/>} />
-          <Route path="/homePage" element={<HomePage setCurrentSession={setCurrentSession}/>} /> 
+          <Route path="/homePage" element={<HomePage setCurrentSession={setCurrentSession}/>} />
+          <Route path="/admin" element={<AdminPage setCurrentSession={setCurrentSession}/>} />
         </Routes>
       </Router>
     </>

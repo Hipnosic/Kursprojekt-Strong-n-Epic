@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Session } from "../../types/Session";
 import useFetchSession from "../../hooks/useFetchSessions";
 import SessionList from "../../components/SessionList";
+import cacheService from "../../service/CacheService";
 
 type HomePageProps = {
   setCurrentSession: React.Dispatch<React.SetStateAction<Session>>;
@@ -10,20 +11,19 @@ type HomePageProps = {
 const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   const [dateSearch, setDateSearch] = useState<string>("");
   const { isLoading, error, data } = useFetchSession(dateSearch);
-
-  
+  const userRole = cacheService.getLocalValue("USER").role;
   const [showSchedule, setShowSchedule] = useState<boolean>(false);
-
  
   const toggleSchedule = () => {
     setShowSchedule(!showSchedule);
   };
 
+  
+
   return (
     <>
       <div className="menu">
         <button className="menu-home-btn">Home</button>
-        <button className="menu-admin-btn">Admin</button>
       </div>
       <div>
         <div className="nav-btns">
@@ -34,6 +34,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
             Schedule
           </button>
           <button className="nav-bookings-btn">My Bookings</button>
+          {userRole === "ADMIN" && <button className="nav-users-btn">Users</button>}
         </div>
         {showSchedule && (
           <>

@@ -5,6 +5,7 @@ import App from "./App";
 import { UserInfo } from "./types/UserTypes";
 import { Session } from "./types/Session";
 import { Server } from "miragejs";
+import { error } from "console";
 
 let userArray: UserInfo[] = [
   {
@@ -40,6 +41,7 @@ let userArray: UserInfo[] = [
 
 let sessionArray: Session[] = [
   {
+    id: 1,
     title: "Muscle Training",
     trainer: "Arnold Schwarzenegger",
     start: new Date("2023-10-02T15:20").toLocaleTimeString(),
@@ -49,6 +51,7 @@ let sessionArray: Session[] = [
     registered: [],
   },
   {
+    id: 2,
     title: "Basic Wing-chun",
     trainer: "Jackie Chan",
     start: new Date("2023-10-05T12:00").toLocaleTimeString(),
@@ -58,6 +61,7 @@ let sessionArray: Session[] = [
     registered: [],
   },
   {
+    id: 3,
     title: "Advanced Kung-Fu",
     trainer: "Jet Li",
     start: new Date("2023-10-08T16:40").toLocaleTimeString(),
@@ -98,7 +102,7 @@ new Server({
       userArray.push(body);
 
       return body;
-    });
+    })
 
     this.get("/session", () => {
       return sessionArray;
@@ -127,6 +131,20 @@ new Server({
 
       return session;
     });
+
+    this.delete("/session/:id", (schema, request) => {
+      const sessionId = request.params.id;
+      const sessionIndex = sessionArray.findIndex((session) => session.id === parseInt(sessionId));
+
+      if (sessionIndex === -1) {
+        throw new Response("Session not found", { status: 404 });
+      }
+
+      sessionArray.splice(sessionIndex, 1);
+
+      return sessionArray;
+    });
+    
   },
 });
 
