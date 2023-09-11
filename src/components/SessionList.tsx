@@ -9,7 +9,7 @@ const SessionList: React.FC<SessionListProps> = ({ sessions }) => {
   return (
     <div>
       {sessions?.map((session, i) => (
-        <SessionItem key={i} session={session}/>
+        <SessionItem key={i} session={session} />
       ))}
     </div>
   );
