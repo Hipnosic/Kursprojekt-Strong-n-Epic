@@ -14,6 +14,8 @@ const useFetchUsers = () => {
         setData(data);
       } catch (error) {
         setError(true);
+      } finally {
+        setIsLoading(false);
       }
     })();
   }, []);
