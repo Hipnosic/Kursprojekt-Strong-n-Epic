@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { UserInfo } from "../types/UserTypes";
+import requestService from "../service/requestService";
 
 const UserList: React.FC = () => {
-  const [Users, setUsers] = useState<UserInfo[]>();
   return <div>UserList</div>;
 };
 
