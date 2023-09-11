@@ -1,4 +1,5 @@
 import { Session } from "../types/Session";
+import { UserInfo } from "../types/UserTypes";
 
 interface loginProps {
   username: string;
@@ -80,7 +81,21 @@ const bookSession = async (quary:bookSessionProps):Promise<Response> => {
   
 }
 
+/**
+ * made a function to get a user by its username with a param
+ * @param username is a string type that comes from local storage
+ * @returns an object which contains the users data
+ */
 
-const requestService = { fetchSession, login, signup,bookSession };
+const getUser = async (username:string):Promise<UserInfo> => {
+  
+  const res = await fetchOptions(`api/user/${username}`, 'GET')
+  if (res === null) throw new Error("could not find user");
+  const data = await res.json() as UserInfo
+  return data
+} 
+
+
+const requestService = { fetchSession, login, signup,bookSession,getUser };
 
 export default requestService;
