@@ -33,27 +33,21 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
     setShowSchedule(!showSchedule);
   };
 
-  const toggleMyBookings = () => {
-    setShowMyBookings(!showMyBookings);
-  };
+  
 
   return (
     <>
       <div className="menu">
         <button className="menu-home-btn">Home</button>
-        <button className="menu-admin-btn">Admin</button>
       </div>
       <div>
         <div className="nav-btns">
           <button className={`nav-schedule-btn${showSchedule ? " active" : ""}`} onClick={toggleSchedule}>
             Schedule
           </button>
-          <button
-            className={`nav-bookings-btn${showMyBookings ? " active" : ""}`}
-            onClick={toggleMyBookings}>
-              My Bookings
-          </button>
-          </div>
+          <button className="nav-bookings-btn">My Bookings</button>
+          {userRole === "ADMIN" && <button className="nav-users-btn">Users</button>}
+        </div>
         {showSchedule && (
           <>
             <input

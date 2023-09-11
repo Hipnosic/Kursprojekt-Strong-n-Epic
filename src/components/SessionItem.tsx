@@ -12,6 +12,7 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   const [registerds, setRegistereds] = useState<number>(session.registered.length);
   const [isBooked, setIsBooked] = useState<boolean>(false);
   const [username] = useState<string>(cacheService.getLocalValue("USER").username);
+  const userRole = cacheService.getLocalValue("USER").role;
 
   useEffect(() => {
     const isRegisterd = session.registered.find((user) => user.username === username);
@@ -19,6 +20,12 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
       setIsBooked(true);
     }
   }, [session.registered, username]);
+
+  const handleDelete = async () => {
+    const response = await requestService.deleteSession(session.id);
+    console.log(await response.json())
+  };
+  
 
   const handleBooking = async () => {
     const quary = {
@@ -55,6 +62,7 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
           <button disabled>Fully Booked</button>
         )}
       </>
+      {userRole === "ADMIN" && <button className="remove-session-btn" onClick={handleDelete}>Remove</button>}
     </div>
   );
 };

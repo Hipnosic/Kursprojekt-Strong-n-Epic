@@ -9,6 +9,7 @@ export interface SessionList {
 }
 
 export interface Session {
+  id: number;
   title: string;
   trainer: string;
   start: string;
