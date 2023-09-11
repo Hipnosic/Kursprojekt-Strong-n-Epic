@@ -3,7 +3,7 @@ import useFetchUsers from "../hooks/useFetchUsers";
 import UserItem from "./UserItem";
 
 const UserList: React.FC = () => {
-  const [update, setUpdate] = useState<number>(0);
+  const [update, setUpdate] = useState<number>(-1);
   const { isLoading, error, data } = useFetchUsers(update);
 
   return (
