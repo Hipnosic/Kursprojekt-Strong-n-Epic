@@ -136,6 +136,16 @@ new Server({
 
       return user;
     });
+
+    this.delete("/user/:id", (schema, request) => {
+      const id = request.params.id;
+
+      const user = userArray.findIndex((user) => user.id === parseInt(id));
+      if (user === undefined) throw new Error("user could not be found in the server");
+      userArray.splice(user, 1);
+
+      return userArray;
+    });
   },
 });
 
