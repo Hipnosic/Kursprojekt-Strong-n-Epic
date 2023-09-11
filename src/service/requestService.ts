@@ -108,7 +108,20 @@ const getUsers = async ():Promise<UserInfo[]> => {
   
 }
 
+/**
+ * made a function that delete a user from the server
+ * @returns registerd users data
+ */
 
-const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers };
+const deleteUser = async (id:number):Promise<UserInfo[]> => {
+  const res = await fetchOptions(`api/user/${id}`,'DELETE')
+  if (res === null) throw new Error("could not find the array in the server");
+  const data = await res.json() as UserInfo[]
+  return data
+  
+}
+
+
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser };
 
 export default requestService;
