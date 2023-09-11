@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import requestService from "../service/requestService";
 import { UserInfo } from "../types/UserTypes";
 
-const useFetchUsers = () => {
+const useFetchUsers = (update: number) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [data, setData] = useState<UserInfo[]>();
@@ -18,7 +18,7 @@ const useFetchUsers = () => {
         setIsLoading(false);
       }
     })();
-  }, []);
+  }, [update]);
   return { isLoading, error, data };
 };
 
