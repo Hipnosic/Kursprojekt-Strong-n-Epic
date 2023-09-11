@@ -52,3 +52,7 @@ code {
   background-color: #007bff;
   color: #fff; 
 }
+.nav-bookings-btn.active {
+  background-color: #007bff;
+  color: #fff; 
+}
