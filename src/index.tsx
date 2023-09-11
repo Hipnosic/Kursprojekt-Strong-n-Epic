@@ -127,6 +127,15 @@ new Server({
 
       return session;
     });
+
+    this.get("/user/:username", (schema, request) => {
+      const username = request.params.username;
+
+      const user = userArray.find((user) => user.username.toLowerCase().includes(username.toLowerCase()));
+      if (user === undefined) throw new Error("user could not be found in the server");
+
+      return user;
+    });
   },
 });
 

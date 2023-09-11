@@ -1,30 +1,25 @@
 import { useState, useEffect } from "react";
-import { Session } from "../types/Session";
 import requestService from "../service/requestService";
+import { UserInfo } from "../types/UserTypes";
 
 const useQuaryUser = (quary: string) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
-  const [data, setData] = useState<Session[]>();
+  const [loading, setloading] = useState<boolean>(true);
+  const [err, setErr] = useState<boolean>(false);
+  const [userData, setUserData] = useState<UserInfo>();
   useEffect(() => {
     (async function () {
       try {
-        setIsLoading(true);
-        const response = await requestService.fetchSession();
-        if (quary !== "") {
-          const matchedData = response.filter((session) => session.date.includes(quary));
-          setData(matchedData);
-        } else {
-          setData(response);
-        }
+        setloading(true);
+        const response = await requestService.getUser(quary);
+        setUserData(response);
       } catch (err) {
-        setError(true);
+        setErr(true);
       } finally {
-        setIsLoading(false);
+        setloading(false);
       }
     })();
   }, [quary]);
-  return { isLoading, error, data };
+  return { loading, err, userData };
 };
 
 export default useQuaryUser;
