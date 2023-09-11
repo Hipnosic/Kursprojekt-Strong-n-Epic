@@ -82,7 +82,7 @@ const bookSession = async (quary:bookSessionProps):Promise<Response> => {
 }
 
 /**
- * made a function to get a user by its username with a param
+ * getUser is a function to get a user by its username with a param
  * @param username is a string type that comes from local storage
  * @returns an object which contains the users data
  */
@@ -96,7 +96,7 @@ const getUser = async (username:string):Promise<UserInfo> => {
 } 
 
 /**
- * made a function that fetched all registerd users in the server 
+ * getUsers is a function that fetched all registerd users in the server 
  * @returns registerd users data
  */
 
@@ -109,8 +109,9 @@ const getUsers = async ():Promise<UserInfo[]> => {
 }
 
 /**
- * made a function that delete a user from the server
- * @returns registerd users data
+ * deleteUser is a function that takes in a id to delete a user form the server 
+ * @param id is a number to help the server find the right user
+ * @returns a server response
  */
 
 const deleteUser = async (id:number):Promise<Response> => {
