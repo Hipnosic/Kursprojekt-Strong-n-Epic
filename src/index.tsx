@@ -5,7 +5,6 @@ import App from "./App";
 import { UserInfo } from "./types/UserTypes";
 import { Session } from "./types/Session";
 import { Server } from "miragejs";
-import { error } from "console";
 
 let userArray: UserInfo[] = [
   {
@@ -102,7 +101,7 @@ new Server({
       userArray.push(body);
 
       return body;
-    })
+    });
 
     this.get("/session", () => {
       return sessionArray;
@@ -144,7 +143,6 @@ new Server({
 
       return sessionArray;
     });
-    
 
     this.get("/user/:username", (schema, request) => {
       const username = request.params.username;
@@ -163,6 +161,16 @@ new Server({
       userArray.splice(user, 1);
 
       return userArray;
+    });
+
+    this.put("/user/:id", (schema, request) => {
+      const id = request.params.id;
+      const role = JSON.parse(request.requestBody);
+      const user = userArray.find((user) => user.id === parseInt(id));
+      if (user === undefined) throw new Error("user could not be found in the server");
+      user.role = role;
+
+      return user;
     });
   },
 });
