@@ -95,7 +95,20 @@ const getUser = async (username:string):Promise<UserInfo> => {
   return data
 } 
 
+/**
+ * made a function that fetched all registerd users in the server 
+ * @returns registerd users data
+ */
 
-const requestService = { fetchSession, login, signup,bookSession,getUser };
+const getUsers = async ():Promise<UserInfo[]> => {
+  const res = await fetchOptions('api/users','GET')
+  if (res === null) throw new Error("could not find the array in the server");
+  const data = await res.json() as UserInfo[]
+  return data
+  
+}
+
+
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers };
 
 export default requestService;
