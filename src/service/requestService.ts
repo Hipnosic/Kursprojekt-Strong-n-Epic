@@ -1,5 +1,5 @@
 import { Session } from "../types/Session";
-import { UserInfo } from "../types/UserTypes";
+import { UserInfo, UserRole } from "../types/UserTypes";
 
 interface loginProps {
   username: string;
@@ -119,7 +119,11 @@ const deleteUser = async (id:number):Promise<Response> => {
   
 }
 
+const updateUser = async (id:number, role:UserRole):Promise<Response> => {
+  return await fetchOptions(`api/user/${id}`,'PUT',role)
+}
 
-const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser };
+
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser };
 
 export default requestService;
