@@ -1,11 +1,13 @@
 import { SessionList } from './Session'
 
+export type UserRole = "ADMIN" | "USER"
+
 export interface UserInfo {
     id: number;
     username: string;
     password: string;
     email: string;
-    role: "ADMIN" | "USER";
+    role: UserRole;
     sessions: SessionList[];
 }
 
