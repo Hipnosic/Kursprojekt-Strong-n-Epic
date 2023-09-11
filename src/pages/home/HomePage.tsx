@@ -17,13 +17,13 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   const { isLoading, error, data } = useQuarySession(dateSearch);
   const { loading, err, userData } = useQuaryUser(username);
 
-  try {
-    setUsername(cacheService.getLocalValue("USER").username);
-  } catch (err) {
-    navigate("/");
-  }
-
-  useEffect(() => {}, []);
+  useEffect(() => {
+    try {
+      setUsername(cacheService.getLocalValue("USER").username);
+    } catch (err) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const [showSchedule, setShowSchedule] = useState<boolean>(false);
 
