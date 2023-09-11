@@ -5,6 +5,7 @@ import useQuarySession from "../../hooks/useQuarySessions";
 import useQuaryUser from "../../hooks/useQuaryUser";
 import cacheService from "../../service/CacheService";
 import { useNavigate } from "react-router-dom";
+import UserList from "../../components/UserList";
 
 type HomePageProps = {
   setCurrentSession: React.Dispatch<React.SetStateAction<Session>>;
@@ -54,6 +55,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
           </>
         )}
       </div>
+      <UserList />
     </>
   );
 };
