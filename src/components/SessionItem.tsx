@@ -5,9 +5,10 @@ import requestService from "../service/requestService";
 
 interface SessionItemProps {
   session: Session;
+  setUpdate: React.Dispatch<React.SetStateAction<number>>
 }
 
-const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
+const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate }) => {
   const [spot] = useState<number>(session.spots);
   const [registerds, setRegistereds] = useState<number>(session.registered.length);
   const [isBooked, setIsBooked] = useState<boolean>(false);
@@ -24,6 +25,7 @@ const SessionItem: React.FC<SessionItemProps> = ({ session }) => {
   const handleDelete = async () => {
     const response = await requestService.deleteSession(session.id);
     console.log(await response.json())
+    setUpdate(session.id)
   };
   
 

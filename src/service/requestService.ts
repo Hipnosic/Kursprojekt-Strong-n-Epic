@@ -124,6 +124,6 @@ const deleteUser = async (id:number):Promise<Response> => {
 }
 
 
-const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser };
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,deleteSession };
 
 export default requestService;

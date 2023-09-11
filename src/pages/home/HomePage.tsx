@@ -45,7 +45,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
             Schedule
           </button>
           <button className="nav-bookings-btn">My Bookings</button>
-          {userRole === "ADMIN" && <button className="nav-users-btn">Users</button>}
         </div>
         {showSchedule && (
           <>
