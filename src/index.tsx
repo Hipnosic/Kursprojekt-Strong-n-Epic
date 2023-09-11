@@ -146,6 +146,16 @@ new Server({
 
       return userArray;
     });
+
+    this.put("/user/:id", (schema, request) => {
+      const id = request.params.id;
+      const role = JSON.parse(request.requestBody);
+      const user = userArray.find((user) => user.id === parseInt(id));
+      if (user === undefined) throw new Error("user could not be found in the server");
+      user.role = role;
+
+      return user;
+    });
   },
 });
 
