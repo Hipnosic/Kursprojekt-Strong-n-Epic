@@ -70,6 +70,10 @@ const fetchSession = async (): Promise<Session[]> => {
   return data;
 };
 
+const deleteSession = async (sessionId: number): Promise<Response> => {
+  return await fetchOptions(`api/session/${sessionId}`, "DELETE");
+}
+
 /**
  * bookSession is a function that takes in a quary and send a PUT request to the server to update two diffrent objects
  * @param quary is an object that contains two diffrent property

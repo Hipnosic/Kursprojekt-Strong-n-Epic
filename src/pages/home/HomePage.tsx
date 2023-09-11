@@ -27,16 +27,18 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   }, [navigate]);
 
   const [showSchedule, setShowSchedule] = useState<boolean>(false);
+  const [showMyBookings, setShowMyBookings] = useState<boolean>(false);
 
   const toggleSchedule = () => {
     setShowSchedule(!showSchedule);
   };
 
+  
+
   return (
     <>
       <div className="menu">
         <button className="menu-home-btn">Home</button>
-        <button className="menu-admin-btn">Admin</button>
       </div>
       <div>
         <div className="nav-btns">
@@ -44,15 +46,26 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
             Schedule
           </button>
           <button className="nav-bookings-btn">My Bookings</button>
+          {userRole === "ADMIN" && <button className="nav-users-btn">Users</button>}
         </div>
         {showSchedule && (
           <>
-            <input type="date" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDateSearch(e.target.value)} />
+            <input
+              type="date"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setDateSearch(e.target.value)
+              }
+            />
             <button onClick={() => setDateSearch("")}>Clear Filter</button>
             {(error && <p>404 could not found</p>) ||
               (isLoading && <p>loading...</p>) ||
-              (data?.length === 0 && <p>There is no session on {dateSearch}</p>) || <SessionList sessions={data} />}
+              (data?.length === 0 && (
+                <p>There is no session on {dateSearch}</p>
+              )) || <SessionList sessions={data} />}
           </>
+        )}
+        {showMyBookings && (
+          <div>My Bookings content goes here</div>
         )}
       </div>
       <UserList />

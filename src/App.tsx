@@ -18,6 +18,7 @@ const defaultUser: UserInfo = {
 }
 
 const defaultSession: Session = {
+  id: 0,
   title: "",
   trainer: "",
   start: "",
@@ -38,7 +39,7 @@ function App() {
           <Route path="/" element={<LandingPage/>} />
           <Route path="/login" element={<LoginPage setCurrentUser={setCurrentUser}/>} />
           <Route path="/signup" element={<SignupPage/>} />
-          <Route path="/homePage" element={<HomePage setCurrentSession={setCurrentSession}/>} /> 
+          <Route path="/homePage" element={<HomePage setCurrentSession={setCurrentSession}/>} />
         </Routes>
       </Router>
     </>
