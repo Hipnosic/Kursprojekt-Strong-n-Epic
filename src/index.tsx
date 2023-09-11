@@ -72,8 +72,8 @@ new Server({
   routes() {
     this.namespace = "api";
 
-    this.get("/login", () => {
-      return { users: userArray };
+    this.get("/users", () => {
+      return userArray;
     });
 
     this.post("/login", (schema, request) => {
