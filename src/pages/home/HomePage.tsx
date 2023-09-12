@@ -5,7 +5,7 @@ import cacheService from "../../service/CacheService";
 import { useNavigate } from "react-router-dom";
 import UserList from "../../components/UserList";
 import { UserRole } from "../../types/UserTypes";
-import BookingList from "../../components/BookingList";
+import BookingList from "../../components/bookingList";
 
 type HomePageProps = {
   setCurrentSession: React.Dispatch<React.SetStateAction<Session>>;

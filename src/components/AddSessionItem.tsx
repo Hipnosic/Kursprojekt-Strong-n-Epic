@@ -56,9 +56,9 @@ const AddSessionComponent: React.FC<AddSessionItemProps> = ({ setUpdate }) => {
         <label>Date (YYYY-MM-DD):</label>
         <input type="date" name="date" value={formData.date} onChange={handleInputChange} />
         <label>Start Time (HH:MM):</label>
-        <input type="datetime-local" name="start" value={formData.start} onChange={handleInputChange} />
+        <input type="time" name="start" value={formData.start} onChange={handleInputChange} />
         <label>End Time (HH:MM):</label>
-        <input type="datetime-local" name="end" value={formData.end} onChange={handleInputChange} />
+        <input type="time" name="end" value={formData.end} onChange={handleInputChange} />
         <label>Available Spots:</label>
         <input type="number" name="spots" value={formData.spots} onChange={handleInputChange} />
         <button type="button" onClick={handleAddSession}>
