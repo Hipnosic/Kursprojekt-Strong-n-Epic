@@ -1,23 +1,15 @@
 import { useState } from "react";
-import { Session } from "../types/Session";
+import { NewSessionData, Session } from "../types/Session";
 import requestService from "../service/requestService";
 
 interface SessionItemInputFormProps {
   session: Session;
   setEdit: React.Dispatch<React.SetStateAction<boolean>>;
+  setUpdate: React.Dispatch<React.SetStateAction<number>>;
 }
 
-type updateSessionDetails = {
-  title: string;
-  trainer: string;
-  start: string;
-  end: string;
-  date: string;
-  spots: number;
-};
-
-const SessionItemInputForm: React.FC<SessionItemInputFormProps> = ({ session, setEdit }) => {
-  const [updateSession, setUpdateSession] = useState<updateSessionDetails>({ title: "", trainer: "", start: "", end: "", date: "", spots: 0 });
+const SessionItemInputForm: React.FC<SessionItemInputFormProps> = ({ session, setEdit, setUpdate }) => {
+  const [updateSession, setUpdateSession] = useState<NewSessionData>({ title: "", trainer: "", start: "", end: "", date: "", spots: 0 });
 
   const handleUpdateSession = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUpdateSession({ ...updateSession, [e.target.name]: e.target.value });
@@ -30,7 +22,13 @@ const SessionItemInputForm: React.FC<SessionItemInputFormProps> = ({ session, se
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await requestService.updateSession(session.id, updateSession);
-    console.log(await res.json());
+    if (res.status >= 400) {
+      return false;
+    } else {
+      const data = (await res.json()) as Session;
+      const randomNumber = Math.random() * data.id;
+      setUpdate(randomNumber);
+    }
   };
 
   return (
