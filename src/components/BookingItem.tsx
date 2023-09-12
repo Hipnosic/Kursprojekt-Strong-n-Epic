@@ -5,12 +5,17 @@ import requestService from "../service/requestService";
 interface BookingItemProps {
   session: SessionList;
   username: string;
+  setUpdate: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const BookingItem: React.FC<BookingItemProps> = ({ session, username }) => {
+const BookingItem: React.FC<BookingItemProps> = ({ session, username, setUpdate }) => {
   const handleUnBooking = async () => {
     const res = await requestService.removeBooking(session.id, username);
-    console.log(await res.json());
+    if (res.status >= 400) {
+      return false;
+    } else {
+      setUpdate(session.id);
+    }
   };
 
   return (
