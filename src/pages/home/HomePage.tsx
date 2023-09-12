@@ -6,6 +6,7 @@ import cacheService from "../../service/CacheService";
 import { useNavigate } from "react-router-dom";
 import UserList from "../../components/UserList";
 import { UserRole } from "../../types/UserTypes";
+import BookingList from "../../components/BookingList";
 
 type HomePageProps = {
   setCurrentSession: React.Dispatch<React.SetStateAction<Session>>;
@@ -73,7 +74,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
       </div>
       {showUsers && <UserList />}
       {showSchedule && <SessionList userData={user} />}
-      {showMyBookings && <div>My Bookings content goes here</div>}
+      {showMyBookings && <BookingList user={user} />}
     </>
   );
 };
