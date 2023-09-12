@@ -70,6 +70,12 @@ const fetchSession = async (): Promise<Session[]> => {
   return data;
 };
 
+/**
+ * deleteSession is a function that takes in the id from a session and does a delete request and deletes the session from server
+ * @param sessionId is the id from the session 
+ * @returns a server response
+ */
+
 const deleteSession = async (sessionId: number): Promise<Response> => {
   return await fetchOptions(`api/session/${sessionId}`, "DELETE");
 }

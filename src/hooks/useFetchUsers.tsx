@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import requestService from "../service/requestService";
 import { UserInfo } from "../types/UserTypes";
 
+/**
+ * useFetchUsers is a hook that fetches all registerd users in the server
+ * @param update is a useState value and when it changes it re renders the hook
+ * @returns isLoading, error, data
+ */
+
 const useFetchUsers = (update: number) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
