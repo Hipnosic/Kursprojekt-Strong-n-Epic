@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import requestService from "../service/requestService";
 import { UserInfo } from "../types/UserTypes";
 
+/**
+ * useQuaryUser is a custom hook to fetch a specific user to get user data
+ * @param quary is the username of the user the hook wants to fetch
+ * @returns loading, err, userData
+ */
+
 const useQuaryUser = (quary: string) => {
   const [loading, setloading] = useState<boolean>(true);
   const [err, setErr] = useState<boolean>(false);

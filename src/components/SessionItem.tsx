@@ -5,7 +5,7 @@ import requestService from "../service/requestService";
 
 interface SessionItemProps {
   session: Session;
-  setUpdate: React.Dispatch<React.SetStateAction<number>>
+  setUpdate: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate }) => {
@@ -24,10 +24,9 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate }) => {
 
   const handleDelete = async () => {
     const response = await requestService.deleteSession(session.id);
-    console.log(await response.json())
-    setUpdate(session.id)
+    console.log(await response.json());
+    setUpdate(session.id);
   };
-  
 
   const handleBooking = async () => {
     const quary = {
@@ -64,7 +63,11 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate }) => {
           <button disabled>Fully Booked</button>
         )}
       </>
-      {userRole === "ADMIN" && <button className="remove-session-btn" onClick={handleDelete}>Remove</button>}
+      {userRole === "ADMIN" && (
+        <button className="remove-session-btn" onClick={handleDelete}>
+          Remove
+        </button>
+      )}
     </div>
   );
 };
