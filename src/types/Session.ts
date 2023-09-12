@@ -18,3 +18,12 @@ export interface Session {
   spots: number;
   registered: UserInfo[];
 }
+
+export interface NewSessionData {
+  title: string;
+  trainer: string;
+  start: string; 
+  end: string;   
+  date: string;  
+  spots: number; 
+}

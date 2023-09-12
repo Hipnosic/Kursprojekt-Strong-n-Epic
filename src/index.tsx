@@ -130,9 +130,9 @@ new Server({
 
       return session;
     });
-    
+
     this.post("/session", (schema, request) => {
-      console.log("recieved post")
+      console.log("recieved post");
       const sessionData = JSON.parse(request.requestBody);
       const newSession = {
         id: sessionArray.length + 1, // Automatically assign an ID
@@ -188,6 +188,21 @@ new Server({
       user.role = role;
 
       return user;
+    });
+
+    this.put("/session/:id", (schema, request) => {
+      const id = request.params.id;
+      const updatedSession = JSON.parse(request.requestBody);
+      const session = sessionArray.find((session) => session.id === parseInt(id));
+      if (session === undefined) throw new Error("session could not be found in the server");
+      if (updatedSession.title !== "") session.title = updatedSession.title;
+      if (updatedSession.trainer !== "") session.trainer = updatedSession.trainer;
+      if (updatedSession.start !== "") session.start = updatedSession.start;
+      if (updatedSession.end !== "") session.end = updatedSession.end;
+      if (updatedSession.date !== "") session.date = updatedSession.date;
+      if (updatedSession.spots !== 0) session.spots = updatedSession.spots;
+
+      return session;
     });
   },
 });

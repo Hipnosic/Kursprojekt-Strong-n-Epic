@@ -3,7 +3,7 @@ import { Session } from "../types/Session";
 import requestService from "../service/requestService";
 import { UserRole } from "../types/UserTypes";
 import SessionItemField from "./SessionItemField";
-import SessionItemInputField from "./SessionItemInputField";
+import SessionItemInputForm from "./SessionItemForm";
 import SessionItemAdminBtn from "./SessionItemAdminBtn";
 
 interface SessionItemProps {
@@ -45,15 +45,18 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
 
   return (
     <div className="Container">
-      {(!edit && <SessionItemField session={session} registerd={registerd} />) || <SessionItemInputField session={session} />}
-
-      {isBooked ? (
-        <button disabled>already booked</button>
-      ) : registerd !== spot ? (
-        <button onClick={handleBooking}>Book</button>
-      ) : (
-        <button disabled>Fully Booked</button>
+      {(!edit && <SessionItemField session={session} registerd={registerd} />) || (
+        <SessionItemInputForm session={session} setEdit={setEdit} setUpdate={setUpdate} />
       )}
+
+      {!edit &&
+        (isBooked ? (
+          <button disabled>already booked</button>
+        ) : registerd !== spot ? (
+          <button onClick={handleBooking}>Book</button>
+        ) : (
+          <button disabled>Fully Booked</button>
+        ))}
 
       {userData.role === "ADMIN" && <SessionItemAdminBtn setUpdate={setUpdate} session={session} setEdit={setEdit} edit={edit} />}
     </div>
