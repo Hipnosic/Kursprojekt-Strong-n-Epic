@@ -34,14 +34,20 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
 
   const toggleSchedule = () => {
     setShowSchedule(!showSchedule);
+    setShowUsers(false);
+    setShowMyBookings(false);
   };
 
   const toggleUsers = () => {
     setShowUsers((showUsers) => !showUsers);
+    setShowSchedule(false);
+    setShowMyBookings(false);
   };
 
   const toggleMyBookings = () => {
     setShowMyBookings((showMyBookings) => !showMyBookings);
+    setShowUsers(false);
+    setShowSchedule(false);
   };
 
   return (
