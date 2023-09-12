@@ -57,7 +57,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
           <button className={`nav-schedule-btn${showSchedule ? " active" : ""}`} onClick={toggleSchedule}>
             Schedule
           </button>
-          <button className="nav-bookings-btn">My Bookings</button>
+          <button className="nav-bookings-btn" onClick={toggleMyBookings}>My Bookings</button>
           {user.role === "ADMIN" && (
             <button className="nav-users-btn" onClick={toggleUsers}>
               Users
