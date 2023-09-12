@@ -43,8 +43,6 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
     }
   };
 
-  console.log(typeof spot);
-
   return (
     <div className="Container">
       {(!edit && <SessionItemField session={session} registerd={registerd} />) || (
