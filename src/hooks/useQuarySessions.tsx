@@ -3,9 +3,11 @@ import { Session } from "../types/Session";
 import requestService from "../service/requestService";
 
 /**
- * useFetchSession is a custom hook to fetch all the sessions in the server if quary is an empty string, if quary isnt empty it search for the objects in the arry
+
+ *useFetchSession is a custom hook to fetch all the sessions in the server if quary is an empty string, if quary isnt empty it search for the objects in the arry
  *  and sends out when its loading or when there is an error and if everything is fine sends the data out
  * @param quary is date in string format exempel '2023-03-08'
+ * @param update is a number from useState if the valu changes the hook fetches its again
  * @returns isLoading, error, data
  */
 const useQuarySession = (quary: string, update: number) => {
