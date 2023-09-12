@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Session } from "../../types/Session";
 import SessionList from "../../components/SessionList";
-import useQuaryUser from "../../hooks/useQuaryUser";
 import cacheService from "../../service/CacheService";
 import { useNavigate } from "react-router-dom";
 import UserList from "../../components/UserList";
-import { UserRole } from "../../types/UserTypes";;
+import { UserRole } from "../../types/UserTypes";
+import BookingList from "../../components/BookingList";
 
 type HomePageProps = {
   setCurrentSession: React.Dispatch<React.SetStateAction<Session>>;
@@ -22,9 +22,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   const [showSchedule, setShowSchedule] = useState<boolean>(false);
   const [showMyBookings, setShowMyBookings] = useState<boolean>(false);
   const [showUsers, setShowUsers] = useState<boolean>(false);
-  const { loading, err, userData } = useQuaryUser(user.username);
-
-  const [showAddSession, setShowAddSession] = useState(false);
 
   useEffect(() => {
     try {
@@ -34,27 +31,24 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
     }
   }, [navigate]);
 
-  const toggleSessionAdd = () => {
-    // Refresh the session list or update UI as needed after adding a session
-    setShowAddSession(!showAddSession); // Hide the form after adding
-  };
-
-  const toggleSchedule = () => {
-    setShowSchedule(!showSchedule);
-    setShowUsers(false);
-    setShowMyBookings(false);
-  };
-
-  const toggleUsers = () => {
-    setShowUsers((showUsers) => !showUsers);
-    setShowSchedule(false);
-    setShowMyBookings(false);
-  };
-
-  const toggleMyBookings = () => {
-    setShowMyBookings((showMyBookings) => !showMyBookings);
-    setShowUsers(false);
-    setShowSchedule(false);
+  const toggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e.currentTarget.name === "schedule") {
+      setShowSchedule(!showSchedule);
+      setShowUsers(false);
+      setShowMyBookings(false);
+    } else if (e.currentTarget.name === "users") {
+      setShowUsers((showUsers) => !showUsers);
+      setShowSchedule(false);
+      setShowMyBookings(false);
+    } else if (e.currentTarget.name === "booking") {
+      setShowMyBookings((showMyBookings) => !showMyBookings);
+      setShowUsers(false);
+      setShowSchedule(false);
+    } else {
+      setShowMyBookings(false);
+      setShowUsers(false);
+      setShowSchedule(false);
+    }
   };
 
   return (
@@ -64,21 +58,21 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
       </div>
 
       <div className="nav-btns">
-        <button className={`nav-schedule-btn${showSchedule ? " active" : ""}`} onClick={toggleSchedule}>
+        <button className={`nav-schedule-btn${showSchedule ? " active" : ""}`} name="schedule" onClick={(e) => toggle(e)}>
           Schedule
         </button>
-        <button className="nav-bookings-btn" onClick={toggleMyBookings}>
+        <button className="nav-bookings-btn" name="booking" onClick={(e) => toggle(e)}>
           My Bookings
         </button>
         {user.role === "ADMIN" && (
-          <button className="nav-users-btn" onClick={toggleUsers}>
+          <button className="nav-users-btn" name="users" onClick={(e) => toggle(e)}>
             Users
           </button>
         )}
       </div>
       {showUsers && <UserList />}
-      {showSchedule && <SessionList />}
-      {showMyBookings && <div>My Bookings content goes here</div>}
+      {showSchedule && <SessionList userData={user} />}
+      {showMyBookings && <BookingList user={user} />}
     </>
   );
 };
