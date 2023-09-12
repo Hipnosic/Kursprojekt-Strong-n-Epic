@@ -4,6 +4,7 @@ import requestService from "../service/requestService";
 import { UserRole } from "../types/UserTypes";
 import SessionItemField from "./SessionItemField";
 import SessionItemInputField from "./SessionItemInputField";
+import SessionItemAdminBtn from "./SessionItemAdminBtn";
 
 interface SessionItemProps {
   session: Session;
@@ -26,12 +27,6 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
       setIsBooked(true);
     }
   }, [session.registered, userData]);
-
-  const handleDelete = async () => {
-    const response = await requestService.deleteSession(session.id);
-    console.log(await response.json());
-    setUpdate(session.id);
-  };
 
   const handleBooking = async () => {
     const quary = {
@@ -60,11 +55,7 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
         <button disabled>Fully Booked</button>
       )}
 
-      {userData.role === "ADMIN" && (
-        <button className="remove-session-btn" onClick={handleDelete}>
-          Remove
-        </button>
-      )}
+      {userData.role === "ADMIN" && <SessionItemAdminBtn setUpdate={setUpdate} session={session} setEdit={setEdit} edit={edit} />}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Session } from "../../types/Session";
 import SessionList from "../../components/SessionList";
-import useQuaryUser from "../../hooks/useQuaryUser";
 import cacheService from "../../service/CacheService";
 import { useNavigate } from "react-router-dom";
 import UserList from "../../components/UserList";
