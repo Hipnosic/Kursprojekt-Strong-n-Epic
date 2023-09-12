@@ -114,7 +114,7 @@ const getUser = async (username:string):Promise<UserInfo> => {
   if (res === null) throw new Error("could not find user");
   const data = await res.json() as UserInfo
   return data
-} 
+}
 
 /**
  * getUsers is a function that fetched all registerd users in the server 
@@ -137,7 +137,6 @@ const getUsers = async ():Promise<UserInfo[]> => {
 
 const deleteUser = async (id:number):Promise<Response> => {
   return await fetchOptions(`api/user/${id}`,'DELETE')
-  
 }
 
 /**

@@ -35,18 +35,20 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CredentialInputFields setUserCredential={setUserCredential} />
+    <form className="login-form" onSubmit={handleSubmit}>
+      <div className="form-container">
+        <CredentialInputFields setUserCredential={setUserCredential} />
 
-      {msg !== "" && <p>{msg}</p>}
+        {msg !== "" && <p>{msg}</p>}
 
-      <button type="submit">Login</button>
-      <button type="reset" onClick={handleCancelBtn}>
-        Cancel
-      </button>
-      <p>
-        No account? <Link to="/signup">Click here</Link>
-      </p>
+        <button className="form-btn" type="submit">Login</button>
+        <button className="form-btn" type="reset" onClick={handleCancelBtn}>
+          Cancel
+        </button>
+        <p>
+          No account? <Link to="/signup">Click here</Link>
+        </p>
+      </div>
     </form>
   );
 };

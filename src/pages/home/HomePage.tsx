@@ -52,7 +52,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   };
 
   return (
-    <>
+    <div className="home-container">
       <div className="menu">
         <button className="menu-home-btn">Home</button>
       </div>
@@ -73,7 +73,7 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
       {showUsers && <UserList />}
       {showSchedule && <SessionList userData={user} />}
       {showMyBookings && <BookingList user={user} />}
-    </>
+    </div>
   );
 };
 

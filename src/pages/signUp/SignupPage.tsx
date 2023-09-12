@@ -28,16 +28,18 @@ export default function SignupPage(): JSX.Element {
   };
 
   return (
-    <form className="signup-container" onSubmit={handleSubmit}>
-      <CredentialInputFields setSingupValues={setSingupValues} />
-      {msg !== "" && <p>{msg}</p>}
+    <form className="signup-form" onSubmit={handleSubmit}>
+      <div className="form-container">
+        <CredentialInputFields setSingupValues={setSingupValues} />
+        {msg !== "" && <p>{msg}</p>}
 
-      <button className="signup-btn" type="submit">
-        Sign up
-      </button>
-      <p>
-        Already has an account? <Link to="/login">Click here</Link>
-      </p>
+        <button className="form-btn" type="submit">
+          Sign up
+        </button>
+        <p>
+          Already has an account? <Link to="/login">Click here</Link>
+        </p>
+      </div>
     </form>
   );
 }
