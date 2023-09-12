@@ -91,6 +91,12 @@ const bookSession = async (quary:bookSessionProps):Promise<Response> => {
   
 }
 
+/**
+ * addSession is a function to add a new session into the server with a post request
+ * @param sessionData is an object that contains all data with the new session
+ * @returns a server response
+ */
+
 const addSession = async (sessionData: AddSessionData): Promise<Response> => {
   return await fetchOptions("api/session", "POST", sessionData);
 }
