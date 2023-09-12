@@ -205,6 +205,23 @@ new Server({
 
       return session;
     });
+
+    this.delete("/user/session/:id", (schema, request) => {
+      const sessionId = request.params.id;
+      const username = JSON.parse(request.requestBody);
+      const user = userArray.find((user) => user.username.toLowerCase().includes(username.toLowerCase()));
+      if (user === undefined) throw new Error("user could not be found in the server");
+      const session = sessionArray.find((session) => session.id === parseInt(sessionId));
+      if (session === undefined) throw new Error("session could not be found in the server");
+      const findUserIndex = session.registered.findIndex((user) => user.username === username);
+      if (findUserIndex === -1) throw new Error("could not find user in this session");
+      session.registered.splice(findUserIndex, 1);
+      const findSessionIndex = user.sessions.findIndex((session) => session.id === parseInt(sessionId));
+      if (findSessionIndex === -1) throw new Error("could not find session in users list");
+      user.sessions.splice(findSessionIndex, 1);
+
+      return user;
+    });
   },
 });
 
