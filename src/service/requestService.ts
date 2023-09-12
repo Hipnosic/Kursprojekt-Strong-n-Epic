@@ -151,6 +151,13 @@ const updateUser = async (id:number, role:UserRole):Promise<Response> => {
   return await fetchOptions(`api/user/${id}`,'PUT',role)
 }
 
+/**
+ * updateSession is a function that update a specific session and fetch to the server with a id
+ * @param id is the id of a specific session
+ * @param data is the data the admin wants to update to
+ * @returns a server response
+ */
+
 const updateSession = async(id:number ,data:NewSessionData):Promise<Response> => {
   return await fetchOptions(`api/session/${id}`,'PUT',data)
 }

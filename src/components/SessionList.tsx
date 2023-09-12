@@ -24,9 +24,7 @@ const SessionList: React.FC<SessionListProps> = ({ userData }) => {
 
   return (
     <>
-      <div>
-        <button onClick={toggleSessionAdd}>Add Session</button>
-      </div>
+      {userData.role === "ADMIN" && <button onClick={toggleSessionAdd}>Add Session</button>}
       {showAddSession && <AddSessionComponent setUpdate={setUpdate} />} {/* Conditional rendering of the form */}
       <input type="date" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDateSearch(e.target.value)} />
       <button onClick={() => setDateSearch("")}>Clear Filter</button>
