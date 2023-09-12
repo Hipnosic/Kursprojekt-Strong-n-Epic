@@ -39,6 +39,10 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
     setShowSchedule(!showSchedule);
   };
 
+  const toggleMyBookings = async () => {
+    setShowMyBookings(!showMyBookings);
+  };
+
   const toggleUsers = () => {
     setShowUsers((showUsers) => !showUsers);
   };
