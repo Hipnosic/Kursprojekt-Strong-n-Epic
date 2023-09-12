@@ -8,7 +8,7 @@ import requestService from "../service/requestService";
  * @param quary is date in string format exempel '2023-03-08'
  * @returns isLoading, error, data
  */
-const useQuarySession = (quary: string) => {
+const useQuarySession = (quary: string, update: number) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [data, setData] = useState<Session[]>();
@@ -29,7 +29,7 @@ const useQuarySession = (quary: string) => {
         setIsLoading(false);
       }
     })();
-  }, [quary]);
+  }, [quary, update]);
   return { isLoading, error, data };
 };
 
