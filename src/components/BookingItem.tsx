@@ -13,6 +13,7 @@ const BookingItem: React.FC<BookingItemProps> = ({ session }) => {
       <p>Starttid: {session.start}</p>
       <p>Sluttid: {session.end}</p>
       <p>Datum: {session.date}</p>
+      <button>Unbook</button>
     </div>
   );
 };
