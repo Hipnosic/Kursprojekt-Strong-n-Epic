@@ -200,7 +200,7 @@ new Server({
       if (updatedSession.start !== "") session.start = updatedSession.start;
       if (updatedSession.end !== "") session.end = updatedSession.end;
       if (updatedSession.date !== "") session.date = updatedSession.date;
-      if (updatedSession.spots !== 0) session.spots = updatedSession.spots;
+      if (updatedSession.spots !== 0) session.spots = parseInt(updatedSession.spots);
 
       return session;
     });

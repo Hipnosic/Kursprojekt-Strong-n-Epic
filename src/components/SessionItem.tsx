@@ -43,6 +43,8 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
     }
   };
 
+  console.log(typeof spot);
+
   return (
     <div className="Container">
       {(!edit && <SessionItemField session={session} registerd={registerd} />) || (
@@ -50,12 +52,8 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
       )}
 
       {!edit &&
-        (isBooked ? (
-          <button disabled>already booked</button>
-        ) : registerd !== spot ? (
+        ((isBooked && <button disabled>already booked</button>) || (registerd === spot && <button disabled>Fully Booked</button>) || (
           <button onClick={handleBooking}>Book</button>
-        ) : (
-          <button disabled>Fully Booked</button>
         ))}
 
       {userData.role === "ADMIN" && <SessionItemAdminBtn setUpdate={setUpdate} session={session} setEdit={setEdit} edit={edit} />}
