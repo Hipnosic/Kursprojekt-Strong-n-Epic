@@ -1,4 +1,4 @@
-import { Session, AddSessionData } from "../types/Session";
+import { Session } from "../types/Session";
 import { UserInfo, UserRole } from "../types/UserTypes";
 
 interface loginProps {
@@ -91,7 +91,7 @@ const bookSession = async (quary:bookSessionProps):Promise<Response> => {
   
 }
 
-const addSession = async (sessionData: AddSessionData): Promise<Response> => {
+const addSession = async (sessionData:Session): Promise<Response> => {
   return await fetchOptions("api/session", "POST", sessionData);
 }
 
