@@ -3,6 +3,7 @@ import useQuarySession from "../hooks/useQuarySessions";
 import SessionItem from "./SessionItem";
 import { UserRole } from "../types/UserTypes";
 
+import AddSessionComponent from "./AddSessionItem";
 interface SessionListProps {
   userData: {
     username: string;
@@ -14,8 +15,19 @@ const SessionList: React.FC<SessionListProps> = ({ userData }) => {
   const [update, setUpdate] = useState<number>(0);
   const [dateSearch, setDateSearch] = useState<string>("");
   const { isLoading, error, data } = useQuarySession(dateSearch, update);
+
+  const [showAddSession, setShowAddSession] = useState<boolean>(false); // State for managing form visibility
+
+  const toggleSessionAdd = () => {
+    setShowAddSession(!showAddSession); // Toggle form visibility
+  };
+
   return (
     <>
+      <div>
+        <button onClick={toggleSessionAdd}>Add Session</button>
+      </div>
+      {showAddSession && <AddSessionComponent setUpdate={setUpdate} />} {/* Conditional rendering of the form */}
       <input type="date" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDateSearch(e.target.value)} />
       <button onClick={() => setDateSearch("")}>Clear Filter</button>
       {(error && <p>404 could not found</p>) ||

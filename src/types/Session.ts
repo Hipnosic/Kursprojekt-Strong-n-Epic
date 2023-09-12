@@ -18,3 +18,12 @@ export interface Session {
   spots: number;
   registered: UserInfo[];
 }
+
+export interface AddSessionData {
+  title: string;
+  trainer: string;
+  start: string; // You might want to change this to a Date object if needed
+  end: string;   // You might want to change this to a Date object if needed
+  date: string;  // You might want to change this to a Date object if needed
+  spots: number; // Number of available spots
+}
