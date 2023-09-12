@@ -4,7 +4,7 @@ import { AddSessionData } from "../types/Session"; // Import the interface
 import requestService from "../service/requestService";
 
 interface AddSessionItemProps {
-  setUpdate: React.Dispatch<React.SetStateAction<number>>
+  setUpdate: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const AddSessionComponent: React.FC<AddSessionItemProps> = ({ setUpdate }) => {
@@ -81,7 +81,9 @@ const AddSessionComponent: React.FC<AddSessionItemProps> = ({ setUpdate }) => {
         <input type="text" name="end" value={formData.end} onChange={handleInputChange} />
         <label>Available Spots:</label>
         <input type="number" name="spots" value={formData.spots} onChange={handleInputChange} />
-        <button type="button" onClick={handleAddSession}>Add Session</button>
+        <button type="button" onClick={handleAddSession}>
+          Add Session
+        </button>
       </form>
     </div>
   );

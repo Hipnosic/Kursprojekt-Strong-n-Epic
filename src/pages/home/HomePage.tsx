@@ -23,8 +23,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   const [showMyBookings, setShowMyBookings] = useState<boolean>(false);
   const [showUsers, setShowUsers] = useState<boolean>(false);
 
-  const [showAddSession, setShowAddSession] = useState(false);
-
   useEffect(() => {
     try {
       setUser(cacheService.getLocalValue("USER"));
@@ -51,11 +49,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
       setShowUsers(false);
       setShowSchedule(false);
     }
-
-    const toggleSessionAdd = () => {
-      // Refresh the session list or update UI as needed after adding a session
-      setShowAddSession(!showAddSession); // Hide the form after adding
-    };
   };
 
   return (
