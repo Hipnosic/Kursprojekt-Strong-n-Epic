@@ -161,7 +161,11 @@ const updateSession = async(id:number ,data:NewSessionData):Promise<Response> =>
   return await fetchOptions(`api/session/${id}`,'PUT',data)
 }
 
+const removeBooking = async (id:number, username:string):Promise<Response> => {
+  return await fetchOptions(`api/user/session/${id}`, 'DELETE' , username)
+}
 
-const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser,deleteSession,addSession,updateSession};
+
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser,deleteSession,addSession,updateSession,removeBooking};
 
 export default requestService;
