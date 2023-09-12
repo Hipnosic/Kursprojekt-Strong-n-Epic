@@ -23,7 +23,6 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   const [showSchedule, setShowSchedule] = useState<boolean>(false);
   const [showMyBookings, setShowMyBookings] = useState<boolean>(false);
   const [showUsers, setShowUsers] = useState<boolean>(false);
-  const { loading, err, userData } = useQuaryUser(user.username);
 
   useEffect(() => {
     try {
