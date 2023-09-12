@@ -10,16 +10,32 @@ interface bookingListProps {
   };
 }
 
+interface Session {
+  id: string;
+}
+
 const BookingList: React.FC<bookingListProps> = ({ user }) => {
   //   const [update, setUpdate] = useState<number>(0);
   const { loading, err, userData } = useQuaryUser(user.username);
+  const [unbookedSessions, setUnbookedSessions] = useState<string[]>([]);
+
+  const handleUnbook = (sessionId: string) => {
+    setUnbookedSessions((prevSessions) => [...prevSessions, sessionId]);
+  };
+
   return (
     <>
       {(err && <p>404 could not found</p>) ||
         (loading && <p>loading...</p>) ||
-        userData?.sessions.map((session, i) => <BookingItem session={session} key={i} />)}
+        (userData?.sessions.map((session, i) => (
+          <div key={i}>
+            <BookingItem session={session} />
+            {!unbookedSessions.includes(session.id) && (
+              <button onClick={() => handleUnbook(session.id)}>Unbook</button>
+            )}
+          </div>
+        )))}
     </>
   );
 };
-
 export default BookingList;
