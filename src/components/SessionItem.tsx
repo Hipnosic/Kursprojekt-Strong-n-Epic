@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Session } from "../types/Session";
 import requestService from "../service/requestService";
 import { UserRole } from "../types/UserTypes";
+import SessionItemField from "./SessionItemField";
+import SessionItemInputField from "./SessionItemInputField";
 
 interface SessionItemProps {
   session: Session;
@@ -13,8 +15,9 @@ interface SessionItemProps {
 }
 
 const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData }) => {
+  const [edit, setEdit] = useState<boolean>(false);
   const [spot] = useState<number>(session.spots);
-  const [registerds, setRegistereds] = useState<number>(session.registered.length);
+  const [registerd, setRegistered] = useState<number>(session.registered.length);
   const [isBooked, setIsBooked] = useState<boolean>(false);
 
   useEffect(() => {
@@ -41,30 +44,22 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
     } else {
       const data = (await res.json()) as Session;
       setIsBooked(true);
-      setRegistereds(data.registered.length);
+      setRegistered(data.registered.length);
     }
   };
 
   return (
     <div className="Container">
-      <h5>{session.title}</h5>
-      <p>{session.trainer}</p>
-      <p>Starttid: {session.start}</p>
-      <p>Sluttid: {session.end}</p>
-      <p>Datum: {session.date}</p>
-      <p>
-        Antal platser:{registerds}/{session.spots}
-      </p>
+      {(!edit && <SessionItemField session={session} registerd={registerd} />) || <SessionItemInputField session={session} />}
 
-      <>
-        {isBooked ? (
-          <button disabled>already booked</button>
-        ) : registerds !== spot ? (
-          <button onClick={handleBooking}>Book</button>
-        ) : (
-          <button disabled>Fully Booked</button>
-        )}
-      </>
+      {isBooked ? (
+        <button disabled>already booked</button>
+      ) : registerd !== spot ? (
+        <button onClick={handleBooking}>Book</button>
+      ) : (
+        <button disabled>Fully Booked</button>
+      )}
+
       {userData.role === "ADMIN" && (
         <button className="remove-session-btn" onClick={handleDelete}>
           Remove
