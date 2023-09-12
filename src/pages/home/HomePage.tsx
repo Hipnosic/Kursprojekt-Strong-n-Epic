@@ -32,22 +32,24 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
     }
   }, [navigate]);
 
-  const toggleSchedule = () => {
-    setShowSchedule(!showSchedule);
-    setShowUsers(false);
-    setShowMyBookings(false);
-  };
-
-  const toggleUsers = () => {
-    setShowUsers((showUsers) => !showUsers);
-    setShowSchedule(false);
-    setShowMyBookings(false);
-  };
-
-  const toggleMyBookings = () => {
-    setShowMyBookings((showMyBookings) => !showMyBookings);
-    setShowUsers(false);
-    setShowSchedule(false);
+  const toggle = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e.currentTarget.name === "schedule") {
+      setShowSchedule(!showSchedule);
+      setShowUsers(false);
+      setShowMyBookings(false);
+    } else if (e.currentTarget.name === "users") {
+      setShowUsers((showUsers) => !showUsers);
+      setShowSchedule(false);
+      setShowMyBookings(false);
+    } else if (e.currentTarget.name === "booking") {
+      setShowMyBookings((showMyBookings) => !showMyBookings);
+      setShowUsers(false);
+      setShowSchedule(false);
+    } else {
+      setShowMyBookings(false);
+      setShowUsers(false);
+      setShowSchedule(false);
+    }
   };
 
   return (
@@ -57,20 +59,20 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
       </div>
 
       <div className="nav-btns">
-        <button className={`nav-schedule-btn${showSchedule ? " active" : ""}`} onClick={toggleSchedule}>
+        <button className={`nav-schedule-btn${showSchedule ? " active" : ""}`} name="schedule" onClick={(e) => toggle(e)}>
           Schedule
         </button>
-        <button className="nav-bookings-btn" onClick={toggleMyBookings}>
+        <button className="nav-bookings-btn" name="booking" onClick={(e) => toggle(e)}>
           My Bookings
         </button>
         {user.role === "ADMIN" && (
-          <button className="nav-users-btn" onClick={toggleUsers}>
+          <button className="nav-users-btn" name="users" onClick={(e) => toggle(e)}>
             Users
           </button>
         )}
       </div>
       {showUsers && <UserList />}
-      {showSchedule && <SessionList />}
+      {showSchedule && <SessionList userData={user} />}
       {showMyBookings && <div>My Bookings content goes here</div>}
     </>
   );

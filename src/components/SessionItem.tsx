@@ -1,26 +1,28 @@
 import { useState, useEffect } from "react";
 import { Session } from "../types/Session";
-import cacheService from "../service/CacheService";
 import requestService from "../service/requestService";
+import { UserRole } from "../types/UserTypes";
 
 interface SessionItemProps {
   session: Session;
   setUpdate: React.Dispatch<React.SetStateAction<number>>;
+  userData: {
+    username: string;
+    role: UserRole;
+  };
 }
 
-const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate }) => {
+const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData }) => {
   const [spot] = useState<number>(session.spots);
   const [registerds, setRegistereds] = useState<number>(session.registered.length);
   const [isBooked, setIsBooked] = useState<boolean>(false);
-  const [username] = useState<string>(cacheService.getLocalValue("USER").username);
-  const userRole = cacheService.getLocalValue("USER").role;
 
   useEffect(() => {
-    const isRegisterd = session.registered.find((user) => user.username === username);
+    const isRegisterd = session.registered.find((user) => user.username === userData.username);
     if (isRegisterd !== undefined) {
       setIsBooked(true);
     }
-  }, [session.registered, username]);
+  }, [session.registered, userData]);
 
   const handleDelete = async () => {
     const response = await requestService.deleteSession(session.id);
@@ -30,7 +32,7 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate }) => {
 
   const handleBooking = async () => {
     const quary = {
-      username: username,
+      username: userData.username,
       title: session.title,
     };
     const res = await requestService.bookSession(quary);
@@ -63,7 +65,7 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate }) => {
           <button disabled>Fully Booked</button>
         )}
       </>
-      {userRole === "ADMIN" && (
+      {userData.role === "ADMIN" && (
         <button className="remove-session-btn" onClick={handleDelete}>
           Remove
         </button>
