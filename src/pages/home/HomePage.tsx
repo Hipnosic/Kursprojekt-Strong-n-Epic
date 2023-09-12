@@ -6,7 +6,7 @@ import useQuaryUser from "../../hooks/useQuaryUser";
 import cacheService from "../../service/CacheService";
 import { useNavigate } from "react-router-dom";
 import UserList from "../../components/UserList";
-import { UserRole } from "../../types/UserTypes";
+import { UserRole } from "../../types/UserTypes";;
 
 type HomePageProps = {
   setCurrentSession: React.Dispatch<React.SetStateAction<Session>>;
@@ -27,6 +27,8 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
   const [showUsers, setShowUsers] = useState<boolean>(false);
   const { loading, err, userData } = useQuaryUser(user.username);
 
+  const [showAddSession, setShowAddSession] = useState(false);
+
   useEffect(() => {
     try {
       setUser(cacheService.getLocalValue("USER"));
@@ -34,6 +36,11 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
       navigate("/");
     }
   }, [navigate]);
+
+  const toggleSessionAdd = () => {
+    // Refresh the session list or update UI as needed after adding a session
+    setShowAddSession(!showAddSession); // Hide the form after adding
+  };
 
   const toggleSchedule = () => {
     setShowSchedule(!showSchedule);

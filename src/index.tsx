@@ -130,6 +130,23 @@ new Server({
 
       return session;
     });
+    
+    this.post("/session", (schema, request) => {
+      console.log("recieved post")
+      const sessionData = JSON.parse(request.requestBody);
+      const newSession = {
+        id: sessionArray.length + 1, // Automatically assign an ID
+        title: sessionData.title,
+        trainer: sessionData.trainer,
+        start: sessionData.start,
+        end: sessionData.end,
+        date: sessionData.date,
+        spots: sessionData.spots,
+        registered: [],
+      };
+      sessionArray.push(newSession);
+      return newSession;
+    });
 
     this.delete("/session/:id", (schema, request) => {
       const sessionId = request.params.id;

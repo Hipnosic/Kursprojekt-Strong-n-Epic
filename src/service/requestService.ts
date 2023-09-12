@@ -1,4 +1,4 @@
-import { Session } from "../types/Session";
+import { Session, AddSessionData } from "../types/Session";
 import { UserInfo, UserRole } from "../types/UserTypes";
 
 interface loginProps {
@@ -85,6 +85,10 @@ const bookSession = async (quary:bookSessionProps):Promise<Response> => {
   
 }
 
+const addSession = async (sessionData: AddSessionData): Promise<Response> => {
+  return await fetchOptions("api/session", "POST", sessionData);
+}
+
 /**
  * getUser is a function to get a user by its username with a param
  * @param username is a string type that comes from local storage
@@ -135,6 +139,6 @@ const updateUser = async (id:number, role:UserRole):Promise<Response> => {
 }
 
 
-const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser,deleteSession };
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser,deleteSession,addSession};
 
 export default requestService;
