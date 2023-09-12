@@ -97,7 +97,8 @@ const bookSession = async (quary:bookSessionProps):Promise<Response> => {
  * @returns a server response
  */
 
-const addSession = async (sessionData: NewSessionData): Promise<Response> => {
+
+const addSession = async (sessionData:Session): Promise<Response> => {
   return await fetchOptions("api/session", "POST", sessionData);
 }
 

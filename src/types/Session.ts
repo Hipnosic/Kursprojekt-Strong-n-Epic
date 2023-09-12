@@ -22,8 +22,8 @@ export interface Session {
 export interface NewSessionData {
   title: string;
   trainer: string;
-  start: string; // You might want to change this to a Date object if needed
-  end: string;   // You might want to change this to a Date object if needed
-  date: string;  // You might want to change this to a Date object if needed
-  spots: number; // Number of available spots
+  start: string; 
+  end: string;   
+  date: string;  
+  spots: number; 
 }
