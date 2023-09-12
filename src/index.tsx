@@ -220,7 +220,7 @@ new Server({
       if (findSessionIndex === -1) throw new Error("could not find session in users list");
       user.sessions.splice(findSessionIndex, 1);
 
-      return user;
+      return { usersList: user.sessions, sessionList: session.registered };
     });
   },
 });

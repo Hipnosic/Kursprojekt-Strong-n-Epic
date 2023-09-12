@@ -17,7 +17,7 @@ const BookingList: React.FC<bookingListProps> = ({ user }) => {
     <>
       {(err && <p>404 could not found</p>) ||
         (loading && <p>loading...</p>) ||
-        userData?.sessions.map((session, i) => <BookingItem session={session} key={i} />)}
+        userData?.sessions.map((session, i) => <BookingItem session={session} key={i} username={user.username} />)}
     </>
   );
 };
