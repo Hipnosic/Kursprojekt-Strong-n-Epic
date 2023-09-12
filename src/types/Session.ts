@@ -1,6 +1,7 @@
 import { UserInfo } from "./UserTypes";
 
 export interface SessionList {
+  id: number;
   title: string;
   trainer: string;
   start: string;

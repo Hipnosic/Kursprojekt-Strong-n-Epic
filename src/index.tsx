@@ -118,6 +118,7 @@ new Server({
       if (isBooked !== undefined) throw new Error("its already added");
 
       const obj = {
+        id: session.id,
         title: session.title,
         trainer: session.trainer,
         start: session.start,
