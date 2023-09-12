@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Session } from "../types/Session";
+import requestService from "../service/requestService";
 
 interface SessionItemInputFormProps {
   session: Session;
@@ -26,33 +27,39 @@ const SessionItemInputForm: React.FC<SessionItemInputFormProps> = ({ session, se
     setEdit(false);
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const res = await requestService.updateSession(session.id, updateSession);
+    console.log(await res.json());
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
-        <label>current title {session.title}</label>
+        <label> title: {session.title}</label>
         <input type="text" name="title" placeholder="Write the new Title" onChange={(e) => handleUpdateSession(e)} />
       </div>
       <div>
-        <label>current trainer {session.trainer}</label>
+        <label> trainer: {session.trainer}</label>
         <input type="text" name="trainer" placeholder="Write the new Trainer" onChange={(e) => handleUpdateSession(e)} />
       </div>
       <div>
-        <label>current start time {session.start}</label>
+        <label> start time: {session.start}</label>
         <input type="time" name="start" onChange={(e) => handleUpdateSession(e)} />
       </div>
       <div>
-        <label>current end time {session.end}</label>
+        <label> end time: {session.end}</label>
         <input type="time" name="end" onChange={(e) => handleUpdateSession(e)} />
       </div>
       <div>
-        <label>current date {session.date}</label>
+        <label> date: {session.date}</label>
         <input type="date" name="date" onChange={(e) => handleUpdateSession(e)} />
       </div>
       <div>
-        <label>current spots {session.spots}</label>
+        <label> spots: {session.spots}</label>
         <input type="number" name="spots" onChange={(e) => handleUpdateSession(e)} />
       </div>
-      <button type="submit">Save</button>{" "}
+      <button type="submit">Save</button>
       <button type="reset" onClick={handleCancelBtn}>
         Cancel
       </button>

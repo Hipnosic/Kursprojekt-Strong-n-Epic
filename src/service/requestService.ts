@@ -1,4 +1,4 @@
-import { Session, AddSessionData } from "../types/Session";
+import { Session, NewSessionData } from "../types/Session";
 import { UserInfo, UserRole } from "../types/UserTypes";
 
 interface loginProps {
@@ -97,7 +97,7 @@ const bookSession = async (quary:bookSessionProps):Promise<Response> => {
  * @returns a server response
  */
 
-const addSession = async (sessionData: AddSessionData): Promise<Response> => {
+const addSession = async (sessionData: NewSessionData): Promise<Response> => {
   return await fetchOptions("api/session", "POST", sessionData);
 }
 
@@ -150,7 +150,11 @@ const updateUser = async (id:number, role:UserRole):Promise<Response> => {
   return await fetchOptions(`api/user/${id}`,'PUT',role)
 }
 
+const updateSession = async(id:number ,data:NewSessionData):Promise<Response> => {
+  return await fetchOptions(`api/session/${id}`,'PUT',data)
+}
 
-const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser,deleteSession,addSession};
+
+const requestService = { fetchSession, login, signup,bookSession,getUser,getUsers,deleteUser,updateUser,deleteSession,addSession,updateSession};
 
 export default requestService;

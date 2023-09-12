@@ -1,6 +1,6 @@
 // AddSessionComponent.tsx
 import React, { useState } from "react";
-import { AddSessionData } from "../types/Session"; // Import the interface
+import { NewSessionData } from "../types/Session"; // Import the interface
 import requestService from "../service/requestService";
 
 interface AddSessionItemProps {
@@ -8,7 +8,7 @@ interface AddSessionItemProps {
 }
 
 const AddSessionComponent: React.FC<AddSessionItemProps> = ({ setUpdate }) => {
-  const [formData, setFormData] = useState<AddSessionData>({
+  const [formData, setFormData] = useState<NewSessionData>({
     title: "",
     trainer: "",
     start: "",

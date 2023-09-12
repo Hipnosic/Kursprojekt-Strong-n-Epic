@@ -19,7 +19,7 @@ export interface Session {
   registered: UserInfo[];
 }
 
-export interface AddSessionData {
+export interface NewSessionData {
   title: string;
   trainer: string;
   start: string; // You might want to change this to a Date object if needed
