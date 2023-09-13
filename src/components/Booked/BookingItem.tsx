@@ -1,6 +1,6 @@
 import React from "react";
-import { SessionList } from "../types/Session";
-import requestService from "../service/requestService";
+import { SessionList } from "../../types/Session";
+import requestService from "../../service/requestService";
 
 interface BookingItemProps {
   session: SessionList;

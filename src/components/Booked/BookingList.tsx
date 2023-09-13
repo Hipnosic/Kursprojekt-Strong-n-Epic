@@ -1,7 +1,7 @@
 import { useState } from "react";
-import useQuaryUser from "../hooks/useQuaryUser";
-import { UserRole } from "../types/UserTypes";
 import BookingItem from "./BookingItem";
+import { UserRole } from "../../types/UserTypes";
+import useQuaryUser from "../../hooks/useQuaryUser";
 
 interface bookingListProps {
   user: {
