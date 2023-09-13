@@ -8,7 +8,7 @@ import { UserInfo } from "../types/UserTypes";
  * @returns loading, err, userData
  */
 
-const useQuaryUser = (quary: string) => {
+const useQuaryUser = (quary: string, update: number) => {
   const [loading, setloading] = useState<boolean>(true);
   const [err, setErr] = useState<boolean>(false);
   const [userData, setUserData] = useState<UserInfo>();
@@ -24,7 +24,7 @@ const useQuaryUser = (quary: string) => {
         setloading(false);
       }
     })();
-  }, [quary]);
+  }, [quary, update]);
   return { loading, err, userData };
 };
 
