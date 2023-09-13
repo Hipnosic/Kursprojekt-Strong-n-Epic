@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { Session } from "../../types/Session";
 import cacheService from "../../service/CacheService";
 import { useNavigate } from "react-router-dom";
-import UserList from "../../components/UserList";
 import { UserRole } from "../../types/UserTypes";
 import SessionList from "../../components/Session/SessionList";
 import BookingList from "../../components/Booked/BookingList";
+import UserList from "../../components/Users/UserList";
 
 type UserDetails = {
   username: string;
