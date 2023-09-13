@@ -6,6 +6,8 @@ import SessionList from "../../components/Session/SessionList";
 import BookingList from "../../components/Booked/BookingList";
 import UserList from "../../components/Users/UserList";
 
+import "./HomePage.css"
+
 type UserDetails = {
   username: string;
   role: UserRole;
