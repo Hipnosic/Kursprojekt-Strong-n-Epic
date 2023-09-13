@@ -5,9 +5,9 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: white;  
-  background: url("./assets//gymSession.jpg") center/cover;
+  -moz-osx-font-smoothing: grayscale;  
+  background: url("./assets//gymSession.jpg") no-repeat;
+  background-size: cover;
 }
 
 code {
@@ -79,7 +79,8 @@ code {
 
 .Container {
   text-align: center;
-  color: white;
+  color: black;
+  -webkit-text-stroke: white;
   display: flex;
   flex-direction: column;
   width: 20em;
