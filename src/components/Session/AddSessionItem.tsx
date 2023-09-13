@@ -45,7 +45,7 @@ const AddSessionComponent: React.FC<AddSessionItemProps> = ({ setUpdate }) => {
   };
 
   return (
-    <div>
+    <div className="add-session-container">
       <h2>Add a New Session</h2>
       <form>
         <label>Title:</label>
