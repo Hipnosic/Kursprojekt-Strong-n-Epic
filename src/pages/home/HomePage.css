@@ -161,3 +161,16 @@
     font-weight: bold;
     color: white;
   }
+
+  .nav-schedule-btn:focus {
+    background-color: greenyellow;
+    color: blue; 
+  }
+  .nav-bookings-btn:focus {
+    background-color: greenyellow;
+    color: blue; 
+  }
+  .nav-users-btn:focus {
+    background-color: greenyellow;
+    color: blu
+  }
