@@ -1,6 +1,6 @@
-import React from "react";
-import requestService from "../service/requestService";
+import React, { useState } from "react";
 import { Session } from "../types/Session";
+import DelConfirmationBtn from "./DelConfirmationBtn";
 
 interface SessionItemAdminBtnProps {
   session: Session;
@@ -10,13 +10,9 @@ interface SessionItemAdminBtnProps {
 }
 
 const SessionItemAdminBtn: React.FC<SessionItemAdminBtnProps> = ({ session, setUpdate, setEdit, edit }) => {
-  const handleDelete = async () => {
-    const response = await requestService.deleteSession(session.id);
-    if (response.status >= 400) {
-      return false;
-    } else {
-      setUpdate(session.id);
-    }
+  const [confirmation, setConfirmation] = useState<boolean>(false);
+  const handleRemove = async () => {
+    setConfirmation((confirmation) => !confirmation);
   };
 
   const handleEdit = () => {
@@ -24,10 +20,14 @@ const SessionItemAdminBtn: React.FC<SessionItemAdminBtnProps> = ({ session, setU
   };
   return (
     <div>
-      <button className="remove-session-btn" onClick={handleDelete}>
-        Remove
-      </button>
-      {!edit && <button onClick={handleEdit}>Edit</button>}
+      {(confirmation && <DelConfirmationBtn session={session} setUpdate={setUpdate} setConfirmation={setConfirmation} />) || (
+        <>
+          <button className="remove-session-btn" onClick={handleRemove}>
+            Remove
+          </button>
+          {!edit && <button onClick={handleEdit}>Edit</button>}
+        </>
+      )}
     </div>
   );
 };
