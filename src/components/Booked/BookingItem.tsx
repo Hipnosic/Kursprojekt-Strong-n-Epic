@@ -1,6 +1,6 @@
-import React from "react";
+import { useState } from "react";
 import { SessionList } from "../../types/Session";
-import requestService from "../../service/requestService";
+import UnBookConfirmationBtn from "./UnBookConfirmationBtn";
 
 interface BookingItemProps {
   session: SessionList;
@@ -9,13 +9,10 @@ interface BookingItemProps {
 }
 
 const BookingItem: React.FC<BookingItemProps> = ({ session, username, setUpdate }) => {
-  const handleUnBooking = async () => {
-    const res = await requestService.removeBooking(session.id, username);
-    if (res.status >= 400) {
-      return false;
-    } else {
-      setUpdate(session.id);
-    }
+  const [confirmation, setConfirmation] = useState<boolean>(false);
+
+  const handleUnBookBtn = () => {
+    setConfirmation((confirmation) => !confirmation);
   };
 
   return (
@@ -25,7 +22,9 @@ const BookingItem: React.FC<BookingItemProps> = ({ session, username, setUpdate 
       <p>Starttid: {session.start}</p>
       <p>Sluttid: {session.end}</p>
       <p>Datum: {session.date}</p>
-      <button onClick={handleUnBooking}>Unbook</button>
+      {(confirmation && <UnBookConfirmationBtn session={session} username={username} setConfirmation={setConfirmation} setUpdate={setUpdate} />) || (
+        <button onClick={handleUnBookBtn}>Unbook</button>
+      )}
     </div>
   );
 };

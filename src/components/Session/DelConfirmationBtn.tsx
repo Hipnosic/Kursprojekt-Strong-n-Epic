@@ -14,6 +14,7 @@ const DelConfirmationBtn: React.FC<DelConfirmationBtnProps> = ({ session, setUpd
       return false;
     } else {
       setUpdate(session.id);
+      setConfirmation(false);
     }
   };
 

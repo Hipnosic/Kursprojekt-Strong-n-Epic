@@ -26,6 +26,7 @@ const BookConfirmationBtn: React.FC<BookConfirmationBtnProps> = ({ session, user
       const data = (await res.json()) as Session;
       setIsBooked(true);
       setRegistered(data.registered.length);
+      setConfirmation(false);
     }
   };
 
