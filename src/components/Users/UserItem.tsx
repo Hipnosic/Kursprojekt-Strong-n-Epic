@@ -38,8 +38,9 @@ const UserItem: React.FC<UserItemProps> = ({ user, setUpdate }) => {
     <div className="user-container">
       <p>{user.username}</p>
       <p>{user.email}</p>
+      <p>{user.role} </p>
       <p>
-        {user.role} <button onClick={handleClick}>change role to {user.role === "ADMIN" ? "user" : "admin"}</button>
+        <button onClick={handleClick}>change role to {user.role === "ADMIN" ? "user" : "admin"}</button>
       </p>
       <button onClick={handleDeleteUser}>Delete user</button>
     </div>
