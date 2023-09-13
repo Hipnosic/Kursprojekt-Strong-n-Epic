@@ -5,11 +5,7 @@ import requestService from "../../service/requestService";
 import CredentialInputFields from "../../components/CredentialInputFields";
 import cacheService from "../../service/CacheService";
 
-type LoginPageProps = {
-  setCurrentUser: React.Dispatch<React.SetStateAction<UserInfo>>;
-};
-
-const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
+const LoginPage: React.FC = () => {
   const [userCredential, setUserCredential] = useState<LoginInterface>({ username: "", password: "" });
   const [msg, setMsg] = useState<string>("");
   const navigate = useNavigate();
@@ -29,8 +25,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
       const data = (await res.json()) as UserInfo;
       cacheService.saveLocalValue("USER", { username: data.username, role: data.role });
       setMsg("logged in successfully");
-      setCurrentUser(data);
-      navigate("/homePage")
+      navigate("/homePage");
     }
   };
 
@@ -41,7 +36,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ setCurrentUser }) => {
 
         {msg !== "" && <p>{msg}</p>}
 
-        <button className="form-btn" type="submit">Login</button>
+        <button className="form-btn" type="submit">
+          Login
+        </button>
         <button className="form-btn" type="reset" onClick={handleCancelBtn}>
           Cancel
         </button>

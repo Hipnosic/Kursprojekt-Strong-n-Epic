@@ -7,16 +7,12 @@ import { UserRole } from "../../types/UserTypes";
 import SessionList from "../../components/Session/SessionList";
 import BookingList from "../../components/Booked/BookingList";
 
-type HomePageProps = {
-  setCurrentSession: React.Dispatch<React.SetStateAction<Session>>;
-};
-
 type UserDetails = {
   username: string;
   role: UserRole;
 };
 
-const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
+const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<UserDetails>({ username: "", role: "USER" });
   const [showSchedule, setShowSchedule] = useState<boolean>(false);
