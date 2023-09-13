@@ -27,8 +27,8 @@ const CredentialInputFields: React.FC<CredentialInputFieldsProps> = ({ setSingup
 
   return (
     <>
-      <div>
-        <label>Username</label>
+      <div className="username-form">
+        <label className="username-label">Username</label>
         <input
           name="username"
           type="text"
@@ -39,8 +39,8 @@ const CredentialInputFields: React.FC<CredentialInputFieldsProps> = ({ setSingup
         />
       </div>
       {setUserCredential === undefined && (
-        <div>
-          <label>Email</label>
+        <div className="email-form">
+          <label className="email-label">Email</label>
           <input
             name="email"
             type="text"
@@ -51,8 +51,8 @@ const CredentialInputFields: React.FC<CredentialInputFieldsProps> = ({ setSingup
           />
         </div>
       )}
-      <div>
-        <label>Password</label>
+      <div className="password-form">
+        <label className="password-label">Password</label>
         <input
           name="password"
           type="password"

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import requestService from "../../service/requestService";
 import CredentialInputFields from "../../components/CredentialInputFields";
 import cacheService from "../../service/CacheService";
+import './loginpage.css';
 
 const LoginPage: React.FC = () => {
   const [userCredential, setUserCredential] = useState<LoginInterface>({ username: "", password: "" });
@@ -31,18 +32,19 @@ const LoginPage: React.FC = () => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
+      <h1 className="login-title">Strong n' Epic</h1>
       <div className="form-container">
         <CredentialInputFields setUserCredential={setUserCredential} />
 
         {msg !== "" && <p>{msg}</p>}
 
-        <button className="form-btn" type="submit">
+        <button className="login-btn" type="submit">
           Login
         </button>
-        <button className="form-btn" type="reset" onClick={handleCancelBtn}>
+        <button className="cancel-btn" type="reset" onClick={handleCancelBtn}>
           Cancel
         </button>
-        <p>
+        <p className="click-here">
           No account? <Link to="/signup">Click here</Link>
         </p>
       </div>
