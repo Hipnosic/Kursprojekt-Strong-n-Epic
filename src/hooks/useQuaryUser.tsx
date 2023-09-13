@@ -5,6 +5,7 @@ import { UserInfo } from "../types/UserTypes";
 /**
  * useQuaryUser is a custom hook to fetch a specific user to get user data
  * @param quary is the username of the user the hook wants to fetch
+ * @param update is a number type from useState if the valu changes the hook fetches its again
  * @returns loading, err, userData
  */
 
