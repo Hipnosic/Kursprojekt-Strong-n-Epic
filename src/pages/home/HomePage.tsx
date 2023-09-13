@@ -55,6 +55,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="home-container">
+      <div className="header-container">
       <div className="menu">
         <button className="menu-logout-btn" onClick={handleLogout}>Logout</button>
       </div>
@@ -70,6 +71,7 @@ const HomePage: React.FC = () => {
             Users
           </button>
         )}
+        </div>
       </div>
       {showUsers && <UserList />}
       {showSchedule && <SessionList userData={user} />}

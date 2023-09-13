@@ -37,8 +37,8 @@ code {
 }
 
 .nav-schedule-btn.active {
-  background-color: #007bff;
-  color: #fff; 
+  background-color: greenyellow;
+  color: blue; 
 }
 .nav-bookings-btn.active {
   background-color: #007bff;
