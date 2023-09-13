@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: white;  
+  background: url("./assets//gymSession.jpg") center/cover;
 }
 
 code {
@@ -15,18 +16,15 @@ code {
 }
 
 .landing-page {
-  background: url("./assets//gymSession.jpg") no-repeat center/cover;
   height: 100vh;
 }
 
 .home-container {
-  background: url("./assets//gymSession.jpg") no-repeat center/cover;
   height: 100vh;
 }
 
 .login-form,
 .signup-form {
-  background: url("./assets//gymSession.jpg") no-repeat center/cover;
   height: 100vh;
   text-align: center;
 }
@@ -77,4 +75,20 @@ code {
   width: 100vw;
   height: 2em;
   color: white;
+}
+
+.Container {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+  margin: auto;
+}
+
+.Container button {
+  margin: auto;
+  width: 8em;
+  padding: 1em;
+  margin-top: 1em;
 }
