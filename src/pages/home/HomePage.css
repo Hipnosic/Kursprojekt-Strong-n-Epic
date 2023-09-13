@@ -31,7 +31,9 @@
     padding-bottom: 1em;
     width: 15em;
     height: 25em;
-    background-color: rgb(99, 37, 37);
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
   }
 
   .user-container {
@@ -42,7 +44,9 @@
     padding-bottom: 1em;
     width: 20em;
     height: 20em;
-    background-color: white;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
   }
 
   .user-list {
