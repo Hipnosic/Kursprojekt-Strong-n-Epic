@@ -1,5 +1,5 @@
-import requestService from "../service/requestService";
-import { UserInfo, UserRole } from "../types/UserTypes";
+import requestService from "../../service/requestService";
+import { UserInfo, UserRole } from "../../types/UserTypes";
 
 type UserItemProps = {
   user: UserInfo;

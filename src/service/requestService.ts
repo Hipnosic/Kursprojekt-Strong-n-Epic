@@ -161,6 +161,13 @@ const updateSession = async(id:number ,data:NewSessionData):Promise<Response> =>
   return await fetchOptions(`api/session/${id}`,'PUT',data)
 }
 
+/**
+ * removeBooking is a fetch function that removes a session from a users session list and removes the user from sessions registerd list with a DELETE request
+ * @param id is the id for the specific session
+ * @param username is the username from the user
+ * @returns a server response
+ */
+
 const removeBooking = async (id:number, username:string):Promise<Response> => {
   return await fetchOptions(`api/user/session/${id}`, 'DELETE' , username)
 }

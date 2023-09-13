@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { Session } from "../types/Session";
-import { UserRole } from "../types/UserTypes";
+import { Session } from "../../types/Session";
+import { UserRole } from "../../types/UserTypes";
 
 interface SessionItemFieldProps {
   session: Session;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useFetchUsers from "../hooks/useFetchUsers";
 import UserItem from "./UserItem";
+import useFetchUsers from "../../hooks/useFetchUsers";
 
 const UserList: React.FC = () => {
   const [update, setUpdate] = useState<number>(-1);

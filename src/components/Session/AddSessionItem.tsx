@@ -1,7 +1,6 @@
-// AddSessionComponent.tsx
 import React, { useState } from "react";
-import { Session } from "../types/Session";
-import requestService from "../service/requestService";
+import requestService from "../../service/requestService";
+import { Session } from "../../types/Session";
 
 interface AddSessionItemProps {
   setUpdate: React.Dispatch<React.SetStateAction<number>>;

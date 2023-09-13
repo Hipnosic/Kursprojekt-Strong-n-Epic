@@ -1,9 +1,8 @@
 import { useState } from "react";
-import useQuarySession from "../hooks/useQuarySessions";
 import SessionItem from "./SessionItem";
-import { UserRole } from "../types/UserTypes";
-
 import AddSessionComponent from "./AddSessionItem";
+import { UserRole } from "../../types/UserTypes";
+import useQuarySession from "../../hooks/useQuarySessions";
 interface SessionListProps {
   userData: {
     username: string;
