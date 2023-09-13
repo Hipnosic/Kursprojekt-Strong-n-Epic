@@ -11,7 +11,7 @@ interface SessionItemFieldProps {
 
 const SessionItemField: React.FC<SessionItemFieldProps> = ({ session, registerd, userData }) => {
   return (
-    <div>
+    <div className="session-item">
       <h5>{session.title}</h5>
       <p>{session.trainer}</p>
       <p>Starttid: {session.start}</p>

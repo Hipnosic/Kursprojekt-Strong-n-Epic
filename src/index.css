@@ -80,13 +80,14 @@ code {
 
 .Container {
   text-align: center;
-  color: white;
+  color: black;
   -webkit-text-stroke: white;
   display: flex;
   flex-direction: column;
   margin: auto;
-  height: 20em;
-  /* background-color: white; */
+  padding-bottom: 1em;
+  height: 26em;
+  background-color: white;
 }
 
 .Container button {
