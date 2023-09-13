@@ -4,6 +4,7 @@ import { UserInfo, signupInterface } from "../../types/UserTypes";
 import requestService from "../../service/requestService";
 import CredentialInputFields from "../../components/CredentialInputFields";
 import cacheService from "../../service/CacheService";
+import './signuppage.css';
 
 export default function SignupPage(): JSX.Element {
   const [singupValues, setSingupValues] = useState<signupInterface>({ username: "", password: "", email: "" });
@@ -29,11 +30,12 @@ export default function SignupPage(): JSX.Element {
 
   return (
     <form className="signup-form" onSubmit={handleSubmit}>
-      <div className="form-container">
+      <h1 className="login-title">Strong n' Epic</h1>
+      <div className="form-container-signup">
         <CredentialInputFields setSingupValues={setSingupValues} />
         {msg !== "" && <p>{msg}</p>}
 
-        <button className="form-btn" type="submit">
+        <button className="signup-btn2" type="submit">
           Sign up
         </button>
         <p>
