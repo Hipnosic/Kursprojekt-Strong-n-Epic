@@ -59,6 +59,7 @@ const HomePage: React.FC = () => {
       <div className="menu">
         <button className="menu-logout-btn" onClick={handleLogout}>Logout</button>
       </div>
+      <h1 className="homepage-title">Strong n' Epic</h1>
       <div className="nav-btns">
         <button className={`nav-schedule-btn${showSchedule ? " active" : ""}`} name="schedule" onClick={(e) => toggle(e)}>
           Schedule
