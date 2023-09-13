@@ -38,7 +38,7 @@ const LoginPage: React.FC = () => {
 
         {msg !== "" && <p>{msg}</p>}
 
-        <button className="login-btn" type="submit">
+        <button className="login-btn2" type="submit">
           Login
         </button>
         <button className="cancel-btn" type="reset" onClick={handleCancelBtn}>

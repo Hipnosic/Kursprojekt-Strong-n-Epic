@@ -17,7 +17,7 @@ export default function LandingPage() {
         <div className="landing-page">
         <h1 className="landing-title">Strong n' Epic</h1>
         <div className="landing-btns">
-            <button className="login-btn" onClick={navigateLogin}>Log In</button>
+            <button className="login-btn1" onClick={navigateLogin}>Log In</button>
             <button className="signup-btn" onClick={navigateSignup}>Sign Up</button>
         </div>
         </div>
