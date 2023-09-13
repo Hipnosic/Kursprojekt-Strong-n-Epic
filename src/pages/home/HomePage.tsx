@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Session } from "../../types/Session";
-import SessionList from "../../components/SessionList";
 import cacheService from "../../service/CacheService";
 import { useNavigate } from "react-router-dom";
 import UserList from "../../components/UserList";
 import { UserRole } from "../../types/UserTypes";
 import BookingList from "../../components/bookingList";
+import SessionList from "../../components/Session/SessionList";
 
 type HomePageProps = {
   setCurrentSession: React.Dispatch<React.SetStateAction<Session>>;
