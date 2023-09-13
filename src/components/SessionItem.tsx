@@ -45,7 +45,7 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
 
   return (
     <div className="Container">
-      {(!edit && <SessionItemField session={session} registerd={registerd} />) || (
+      {(!edit && <SessionItemField session={session} registerd={registerd} userData={userData}/>) || (
         <SessionItemInputForm session={session} setEdit={setEdit} setUpdate={setUpdate} />
       )}
 

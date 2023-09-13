@@ -31,6 +31,11 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
     }
   }, [navigate]);
 
+  const handleLogout = () => {
+    cacheService.removeLocalValue("USER");
+    navigate("/")
+  };
+
   const toggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (e.currentTarget.name === "schedule") {
       setShowSchedule(!showSchedule);
@@ -55,8 +60,8 @@ const HomePage: React.FC<HomePageProps> = ({ setCurrentSession }) => {
     <div className="home-container">
       <div className="menu">
         <button className="menu-home-btn">Home</button>
+        <button className="menu-logout-btn" onClick={handleLogout}>Logout</button>
       </div>
-
       <div className="nav-btns">
         <button className={`nav-schedule-btn${showSchedule ? " active" : ""}`} name="schedule" onClick={(e) => toggle(e)}>
           Schedule
