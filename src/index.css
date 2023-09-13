@@ -22,6 +22,7 @@ code {
 
 .home-container {
   height: 100vh;
+  color: white;
 }
 
 .login-form,
@@ -82,11 +83,9 @@ code {
   text-align: center;
   color: black;
   -webkit-text-stroke: white;
-  display: flex;
-  flex-direction: column;
   margin: auto;
   padding-bottom: 1em;
-  height: 26em;
+  height: 28em;
   background-color: white;
 }
 
@@ -105,4 +104,12 @@ code {
   max-width: 80em;
   height: 30em;
   margin: auto;
+}
+
+.add-session-container {
+  width: 10em;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
