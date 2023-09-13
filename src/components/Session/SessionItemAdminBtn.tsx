@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Session } from "../types/Session";
 import DelConfirmationBtn from "./DelConfirmationBtn";
+import { Session } from "../../types/Session";
 
 interface SessionItemAdminBtnProps {
   session: Session;
