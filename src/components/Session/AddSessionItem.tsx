@@ -31,7 +31,7 @@ const AddSessionComponent: React.FC<AddSessionItemProps> = ({ setUpdate }) => {
       const response = await requestService.addSession(formData);
       if (response.status === 201) {
         // Session added successfully, extract the new session ID from the response
-        const data = await response.json();
+        const data = (await response.json()) as Session;
         const newSessionId = data.id;
         setUpdate(newSessionId);
         console.log("Session added successfully!");
