@@ -35,7 +35,7 @@ const UserItem: React.FC<UserItemProps> = ({ user, setUpdate }) => {
     }
   };
   return (
-    <div>
+    <div className="user-container">
       <p>{user.username}</p>
       <p>{user.email}</p>
       <p>

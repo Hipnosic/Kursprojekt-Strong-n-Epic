@@ -32,6 +32,27 @@
     height: 20em;
     background-color: white;
   }
+
+  .user-container {
+    text-align: center;
+    color: black;
+    -webkit-text-stroke: white;
+    margin: auto;
+    padding-bottom: 1em;
+    width: 15em;
+    height: 10em;
+    background-color: white;
+  }
+
+  .user-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: none;
+    max-width: 80em;
+    height: 30em;
+    margin: auto;
+  }
   
   .session-container button,
   .booking-container button {

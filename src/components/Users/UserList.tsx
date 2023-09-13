@@ -7,11 +7,11 @@ const UserList: React.FC = () => {
   const { isLoading, error, data } = useFetchUsers(update);
 
   return (
-    <>
+    <div className="user-list">
       {(error && <p>404 could not found</p>) ||
         (isLoading && <p>loading...</p>) ||
         data?.map((user, i) => <UserItem key={i} user={user} setUpdate={setUpdate} />)}{" "}
-    </>
+    </div>
   );
 };
 
