@@ -6,7 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;  
-  /* background: url("./assets//gymSession.jpg") no-repeat; */
+  background-image: url("./assets/gymSession.jpg"), url("./assets/gymSession2.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -30,7 +31,7 @@ code {
   flex-direction: column;
   width: 10em;
   margin: auto;
-  padding-top: 10em;
+  padding-top: 8em;
   color: white;
 }
 
@@ -60,8 +61,10 @@ code {
   -webkit-text-stroke: white;
   display: flex;
   flex-direction: column;
-  width: 20em;
   margin: auto;
+  padding-bottom: 1em;
+  height: 26em;
+  background-color: white;
 }
 
 .Container button {
@@ -69,4 +72,14 @@ code {
   width: 8em;
   padding: 1em;
   margin-top: 1em;
+}
+
+.session-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-width: none;
+  max-width: 80em;
+  height: 30em;
+  margin: auto;
 }

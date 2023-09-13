@@ -22,16 +22,18 @@ const SessionList: React.FC<SessionListProps> = ({ userData }) => {
   };
 
   return (
-    <>
+    <div className="session-list-container">
       {userData.role === "ADMIN" && <button onClick={toggleSessionAdd}>Add Session</button>}
       {showAddSession && <AddSessionComponent setUpdate={setUpdate} />}
       <input type="date" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDateSearch(e.target.value)} />
       <button onClick={() => setDateSearch("")}>Clear Filter</button>
-      {(error && <p>404 could not found</p>) ||
+      <div className="session-list">
+        {(error && <p>404 could not found</p>) ||
         (isLoading && <p>loading...</p>) ||
         (data?.length === 0 && <p>There is no session on {dateSearch}</p>) ||
         data?.map((session, i) => <SessionItem userData={userData} key={i} session={session} setUpdate={setUpdate} />)}
-    </>
+      </div>
+    </div>
   );
 };
 
