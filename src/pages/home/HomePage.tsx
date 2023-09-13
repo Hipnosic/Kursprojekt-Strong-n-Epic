@@ -56,7 +56,6 @@ const HomePage: React.FC = () => {
   return (
     <div className="home-container">
       <div className="menu">
-        <button className="menu-home-btn">Home</button>
         <button className="menu-logout-btn" onClick={handleLogout}>Logout</button>
       </div>
       <div className="nav-btns">
