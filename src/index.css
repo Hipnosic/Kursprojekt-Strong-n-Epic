@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;  
-  background-image: url("./assets/gymSession.jpg"), url("./assets/gymSession2.jpg");
+  /* background-image: url("./assets/gymSession.jpg"), url("./assets/gymSession2.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -14,10 +14,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.landing-page {
-  height: 100vh;
 }
 
 .home-container {
@@ -38,25 +34,6 @@ code {
   margin: auto;
   padding-top: 8em;
   color: white;
-}
-
-
-.landing-title {
-  margin-top: 0;
-  color: white;
-  text-align: center;
-  padding-top: 2em;
-  -webkit-text-stroke: 1px  black;
-  text-shadow: 0px 2px 5px;
-  font-size: 3em;
-}
-
-.landing-btns {
- display: flex;
- flex-direction: column;
- width: 10em;
- margin: auto;
- padding-top: 10em;
 }
 
 .form-btn {
