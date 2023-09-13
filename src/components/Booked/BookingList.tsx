@@ -14,11 +14,11 @@ const BookingList: React.FC<bookingListProps> = ({ user }) => {
   const { loading, err, userData } = useQuaryUser(user.username, update);
 
   return (
-    <>
+    <div className="booking-list-container">
       {(err && <p>404 could not found</p>) ||
         (loading && <p>loading...</p>) ||
         userData?.sessions.map((session, i) => <BookingItem session={session} key={i} username={user.username} setUpdate={setUpdate} />)}
-    </>
+    </div>
   );
 };
 

@@ -16,7 +16,7 @@ const BookingItem: React.FC<BookingItemProps> = ({ session, username, setUpdate 
   };
 
   return (
-    <div>
+    <div className="booking-container">
       <h5>{session.title}</h5>
       <p>{session.trainer}</p>
       <p>Starttid: {session.start}</p>
