@@ -1,4 +1,4 @@
-import { Session } from "../types/Session";
+import { Session } from "../../types/Session";
 
 interface SessionItemFieldProps {
   session: Session;

@@ -1,6 +1,6 @@
 import React from "react";
-import requestService from "../service/requestService";
-import { Session } from "../types/Session";
+import requestService from "../../service/requestService";
+import { Session } from "../../types/Session";
 interface DelConfirmationBtnProps {
   session: Session;
   setUpdate: React.Dispatch<React.SetStateAction<number>>;

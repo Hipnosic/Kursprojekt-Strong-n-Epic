@@ -15,16 +15,16 @@ const SessionList: React.FC<SessionListProps> = ({ userData }) => {
   const [dateSearch, setDateSearch] = useState<string>("");
   const { isLoading, error, data } = useQuarySession(dateSearch, update);
 
-  const [showAddSession, setShowAddSession] = useState<boolean>(false); // State for managing form visibility
+  const [showAddSession, setShowAddSession] = useState<boolean>(false);
 
   const toggleSessionAdd = () => {
-    setShowAddSession(!showAddSession); // Toggle form visibility
+    setShowAddSession(!showAddSession);
   };
 
   return (
     <>
       {userData.role === "ADMIN" && <button onClick={toggleSessionAdd}>Add Session</button>}
-      {showAddSession && <AddSessionComponent setUpdate={setUpdate} />} {/* Conditional rendering of the form */}
+      {showAddSession && <AddSessionComponent setUpdate={setUpdate} />}
       <input type="date" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDateSearch(e.target.value)} />
       <button onClick={() => setDateSearch("")}>Clear Filter</button>
       {(error && <p>404 could not found</p>) ||

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NewSessionData, Session } from "../types/Session";
-import requestService from "../service/requestService";
+import { NewSessionData, Session } from "../../types/Session";
+import requestService from "../../service/requestService";
 
 interface SessionItemInputFormProps {
   session: Session;
