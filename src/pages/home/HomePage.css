@@ -163,6 +163,19 @@
     font-weight: bold;
     color: white;
   }
+
+  .nav-schedule-btn:focus {
+    background-color: greenyellow;
+    color: blue; 
+  }
+  .nav-bookings-btn:focus {
+    background-color: greenyellow;
+    color: blue; 
+  }
+  .nav-users-btn:focus {
+    background-color: greenyellow;
+    color: blu
+  }
   .homepage-title {
     margin: 0em 0em 0em 1em;
     font-size: 2.5em;
