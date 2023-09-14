@@ -1,0 +1,186 @@
+.home-container {
+    height: 100vh;
+    color: white;
+    background-image: url("../../assets/homepage.jpg"), url("../../assets/landingpage2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.menu {
+   display: flex;
+   justify-content: end;
+  }
+  
+  .session-container {
+    text-align: center;
+    color: black;
+    -webkit-text-stroke: white;
+    margin: auto;
+    padding-bottom: 1em;
+    height: 30em;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+  }
+
+  .booking-container {
+    text-align: center;
+    color: black;
+    -webkit-text-stroke: white;
+    margin: auto;
+    padding-bottom: 1em;
+    width: 15em;
+    height: 25em;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+  }
+
+  .user-container {
+    text-align: center;
+    color: black;
+    -webkit-text-stroke: white;
+    margin: auto;
+    padding-bottom: 1em;
+    width: 20em;
+    height: 20em;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+  }
+
+  .user-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: none;
+    max-width: 80em;
+    height: 30em;
+    margin: auto;
+  }
+  
+  .session-container button,
+  .booking-container button,
+  .user-container button {
+    width: 8em;
+    height: 3em;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: rgb(0, 0, 252);
+    color: white;
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+    margin-top: 0.5em;
+  }
+  
+  .session-container button:hover,
+  .booking-container button:hover {
+    background-color: rgb(178,187,194);
+    color: rgb(134, 0, 0); 
+    }
+
+  .session-list,
+  .booking-list-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: none;
+    max-width: 80em;
+    height: 30em;
+    margin: auto;
+  }
+  
+  .add-session-container {
+    width: 20vw;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-session-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-session-container form input {
+    margin: auto;
+    text-align: center;
+    width: 60%;
+    height: 2em;
+  }
+  
+  .add-session-container form button {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60%;
+    height: 4em;
+  }
+  .nav-btns {
+    display: flex;
+    justify-content: center;
+    height: 3em;
+  }
+  .header-container {
+    width: 100%;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+  }
+  .menu-logout-btn {
+    margin: 1em 1em 0em 0em;
+    height: 2.5em;
+    width: 6em;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: rgb(0, 0, 252);
+    color: white;
+    box-shadow: 0px 2px 5px rgb(5, 4, 4)
+  }
+  .menu-logout-btn:hover {
+    background-color: rgb(178,187,194);
+    color: red; 
+  }
+  .nav-schedule-btn {
+    width: 10em;
+    margin-right: 1em;
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+    color: white;
+    background-color: rgb(0, 0, 252);
+    font-size: 1em;
+    font-weight: bold;
+  }
+  .nav-bookings-btn {
+    width: 10em;
+    margin-right: 1em;
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+    background-color: rgb(0, 0, 252);
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+  }
+  .nav-users-btn {
+    width: 10em;
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+    background-color: rgb(0, 0, 252);
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+  }
+
+  .nav-schedule-btn:focus {
+    background-color: greenyellow;
+    color: blue; 
+  }
+  .nav-bookings-btn:focus {
+    background-color: greenyellow;
+    color: blue; 
+  }
+  .nav-users-btn:focus {
+    background-color: greenyellow;
+    color: blue;
+  }
+  .homepage-title {
+    margin: 0em 0em 0em 1em;
+    font-size: 2.5em;
+  }

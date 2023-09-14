@@ -1,30 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
-import LandingPage from './pages/landing/LandingPage';
-import { UserInfo } from './types/UserTypes';
-
-const defaultUser: UserInfo = {
-  username: "",
-  password: "",
-  role: "USER",
-}
-
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/landing/LandingPage";
+import LoginPage from "./pages/logIn/LoginPage";
+import SignupPage from "./pages/signUp/SignupPage";
+import HomePage from "./pages/home/HomePage";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(defaultUser) 
-
-  
   return (
     <>
-    <Router>
-      <div className='App'>
+      <Router>
         <Routes>
-          <Route path="/" element={<LandingPage setCurrentUser={setCurrentUser}/>} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/homePage" element={<HomePage />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
     </>
   );
 }

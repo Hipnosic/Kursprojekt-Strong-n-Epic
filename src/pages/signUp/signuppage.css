@@ -1,0 +1,39 @@
+.signup-form {
+    background: url("../../assets/landingpage3.jpg") no-repeat center center/cover;
+    height: 100vh;
+    color: white;
+    padding: 2em;
+    font-size: 0.8em;
+    position: relative;
+}
+.form-container-signup {
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+    margin: auto;
+    padding: 4em 4em 4em 4em;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+}
+.email-form {
+    margin-bottom: 1em;
+}
+.email-field {
+    height: 1.5em;
+    width: 13em;
+    margin-left: 3em;
+}
+.signup-btn2 {
+    margin-top: 3em;
+    height: 3em;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
+}
+.signup-btn2:hover {
+    background-color: rgb(178,187,194);
+    color: green; 
+    } 

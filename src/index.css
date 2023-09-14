@@ -5,7 +5,10 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;  
+  /* background-image: url("./assets/gymSession.jpg"), url("./assets/gymSession2.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
@@ -13,37 +16,22 @@ code {
     monospace;
 }
 
-.landing-page {
-  background: url("./assets//gymSession.jpg") no-repeat center/cover;
+.login-form,
+.signup-form {
   height: 100vh;
-  
-}
-
-.landing-title {
-  margin-top: 0;
-  color: white;
   text-align: center;
-  padding-top: 4em;
-  -webkit-text-stroke: 1px  black;
-  text-shadow: 0px 2px 5px;
-  font-size: 3em;
 }
 
-.landing-btns {
- display: flex;
- flex-direction: column;
- width: 10em;
- margin: auto;
- padding-top: 16em;
- height: 100vh;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 10em;
+  margin: auto;
+  padding-top: 8em;
+  color: white;
 }
 
-.login-btn {
-  padding: 1em;
-  margin-bottom: 1em;
-}
-
-.signup-btn {
+.form-btn {
   padding: 1em;
   margin-top: 1em;
 }
