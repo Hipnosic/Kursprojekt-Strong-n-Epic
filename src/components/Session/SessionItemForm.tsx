@@ -57,8 +57,8 @@ const SessionItemInputForm: React.FC<SessionItemInputFormProps> = ({ session, se
         <label> spots: {session.spots}</label>
         <input type="number" name="spots" onChange={(e) => handleUpdateSession(e)} />
       </div>
-      <button type="submit">Save</button>
-      <button type="reset" onClick={handleCancelBtn}>
+      <button className="positive-btn" type="submit">Save</button>
+      <button className="delete-btn" type="reset" onClick={handleCancelBtn}>
         Cancel
       </button>
     </form>

@@ -25,7 +25,7 @@ const SessionItemAdminBtn: React.FC<SessionItemAdminBtnProps> = ({ session, setU
           <button className="remove-session-btn" onClick={handleRemove}>
             Remove
           </button>
-          {!edit && <button onClick={handleEdit}>Edit</button>}
+          {!edit && <button className="positive-btn" onClick={handleEdit}>Edit</button>}
         </>
       )}
     </div>

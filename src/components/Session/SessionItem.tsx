@@ -51,7 +51,7 @@ const SessionItem: React.FC<SessionItemProps> = ({ session, setUpdate, userData 
         <>
           {!edit &&
             ((isBooked && <button disabled>already booked</button>) || (registerd === spot && <button disabled>Fully Booked</button>) || (
-              <button onClick={handleBookBtn}>Book</button>
+              <button className="positive-btn" onClick={handleBookBtn}>Book</button>
             ))}
         </>
       )}

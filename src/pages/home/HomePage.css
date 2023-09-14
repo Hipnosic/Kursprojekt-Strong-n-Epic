@@ -72,10 +72,16 @@
     margin-top: 0.5em;
   }
   
-  .session-container button:hover,
-  .booking-container button:hover {
+  .delete-btn:hover,
+  .remove-session-btn:hover {
     background-color: rgb(178,187,194);
     color: rgb(134, 0, 0); 
+  }
+
+  .positive-btn:hover,
+  .positive-btn:hover {
+    background-color: rgb(178,187,194);
+    color: rgb(9, 193, 25); 
     }
 
   .session-list,

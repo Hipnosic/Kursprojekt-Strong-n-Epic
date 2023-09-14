@@ -24,8 +24,8 @@ const DelConfirmationBtn: React.FC<DelConfirmationBtnProps> = ({ session, setUpd
   return (
     <>
       <p>Are u sure u want to delete {session.title}</p>
-      <button onClick={handleDelete}>Delete</button>
-      <button onClick={handleCancel}>Cancel</button>
+      <button className="delete-btn" onClick={handleDelete}>Delete</button>
+      <button className="positive-btn" onClick={handleCancel}>Cancel</button>
     </>
   );
 };
