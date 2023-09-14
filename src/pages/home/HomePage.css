@@ -18,7 +18,9 @@
     margin: auto;
     padding-bottom: 1em;
     height: 30em;
-    background-color: white;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
   }
 
   .booking-container {
@@ -29,7 +31,9 @@
     padding-bottom: 1em;
     width: 15em;
     height: 25em;
-    background-color: white;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
   }
 
   .user-container {
@@ -40,7 +44,9 @@
     padding-bottom: 1em;
     width: 20em;
     height: 20em;
-    background-color: white;
+    opacity: 80%;
+    background-color: rgb(178,187,194);
+    box-shadow: 0px 2px 5px rgb(5, 4, 4);
   }
 
   .user-list {
@@ -178,7 +184,7 @@
   }
   .nav-users-btn:focus {
     background-color: greenyellow;
-    color: blu
+    color: blue;
   }
   .homepage-title {
     margin: 0em 0em 0em 1em;
